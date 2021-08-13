@@ -2,6 +2,7 @@ package iss.workshops.telemedicinemobile.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -30,6 +31,7 @@ public class UserActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
+    Intent intentToPatientHome;
 
     private API api;
 
@@ -38,7 +40,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-
+        intentToPatientHome = new Intent(this, PatientHomeActivity.class);
 
         usernameEditText = findViewById(R.id.activity_main_usernameEditText);
         passwordEditText = findViewById(R.id.activity_main_passwordEditText);
@@ -76,6 +78,8 @@ public class UserActivity extends AppCompatActivity {
 
 
                     loginUser(username, password);
+                    startActivity(intentToPatientHome);
+
                 }
                 else
                 {
@@ -129,13 +133,16 @@ public class UserActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (response.code()== 200) {
+                if (response.code()== 200)
+                {
+                    String msg= "Successful" + response.code();
+                    Toast.makeText(UserActivity.this, msg, Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(UserActivity.this, "successful", Toast.LENGTH_LONG).show();
 
                 }
-                Toast.makeText(UserActivity.this, "UNSuccessful", Toast.LENGTH_LONG).show();
-
+                else {
+                    Toast.makeText(UserActivity.this, "UNSuccessful", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override

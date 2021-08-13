@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PatientHomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+    <TextView
+        android:id="@+id/ourDoctors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="Our Doctors" />
+    <TextView
+        android:id="@+id/bookConsultation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Book Consultation" />
+    <TextView
+        android:id="@+id/consultationHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Consultation History" />
+
+        <TextView
+            android:id="@+id/healthNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Health News" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+
