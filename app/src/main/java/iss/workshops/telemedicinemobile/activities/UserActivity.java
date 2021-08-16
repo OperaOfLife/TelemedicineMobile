@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -78,6 +79,10 @@ public class UserActivity extends AppCompatActivity {
 
 
                     loginUser(username, password);
+
+                    //KAT (14/8/2021)
+                    intentToPatientHome.putExtra("username", username);
+
                     startActivity(intentToPatientHome);
 
                 }
@@ -92,8 +97,6 @@ public class UserActivity extends AppCompatActivity {
 
     private void loginUser(String username, String password)
     {
-
-
         if (!validate(username, password))
         {
             String toastMessage = "Username or Password are not populated";
@@ -101,8 +104,6 @@ public class UserActivity extends AppCompatActivity {
         }
         else
         {
-
-
             User u = new User();
             u.setUserName(username);
             u.setPassword(password);
@@ -128,8 +129,6 @@ public class UserActivity extends AppCompatActivity {
 
     public void userLogin(Call<User> call)
     {
-
-
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
