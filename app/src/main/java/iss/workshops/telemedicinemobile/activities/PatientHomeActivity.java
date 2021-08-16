@@ -2,6 +2,7 @@ package iss.workshops.telemedicinemobile.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -9,18 +10,21 @@ import android.view.View;
 import android.widget.TextView;
 
 import iss.workshops.telemedicinemobile.R;
+import iss.workshops.telemedicinemobile.activities.HealthNews.HealthNewsActivity;
+import iss.workshops.telemedicinemobile.activities.OurDoctors.DoctorActivity;
 
 public class PatientHomeActivity extends AppCompatActivity {
 
     Intent intentToHistory,intentToDoctors,intentToBook,intentToHealthNews;
     TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_home);
 
-        intentToDoctors = new Intent(this, OurDoctorsActivity.class);
+        intentToDoctors = new Intent(this, DoctorActivity.class);
         intentToBook = new Intent(this, BookConsultationActivity.class);
         intentToHistory = new Intent(this, ConsultationHistoryActivity.class);
         intentToHealthNews = new Intent(this, HealthNewsActivity.class);
@@ -60,6 +64,7 @@ public class PatientHomeActivity extends AppCompatActivity {
         {
         @Override
         public void onClick(View v) {
+
         startActivity(intentToHealthNews); }
     });
 }
