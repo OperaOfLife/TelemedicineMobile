@@ -17,7 +17,7 @@
         <activity android:name=".activities.HealthNews.HealthNewsActivity"></activity>
         <activity android:name=".activities.HealthNews.DetailActivity"></activity>
         <activity android:name=".activities.ConsultationHistoryActivity" />
-        <activity android:name=".activities.OurDoctors.DoctorActivity$ConsultationHistoryActivity" />
+        <activity android:name=".activities.OurDoctors.DoctorDetailsActivity" />
         <activity android:name=".activities.BookConsultationActivity" />
         <activity android:name=".activities.OurDoctors.DoctorActivity" />
         <activity android:name=".activities.PatientHomeActivity" />
