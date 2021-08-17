@@ -78,11 +78,10 @@ public class DoctorActivity extends AppCompatActivity {
     }
 
     private void getDoctorList() {
-        Toast.makeText(getApplicationContext(), getString(R.string.login_form_login),
-                Toast.LENGTH_LONG).show();
 
 
-        Call<List<Doctor>> call = RetrofitClient.getInstance().getAPI().listDoctors();
+
+                Call<List<Doctor>> call = RetrofitClient.getInstance().getAPI().listDoctors();
         call.enqueue(new Callback<List<Doctor>>() {
             @Override
             public void onResponse(Call<List<Doctor>> call, Response<List<Doctor>> response) {

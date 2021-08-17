@@ -9,7 +9,7 @@ public class RetrofitClient
 {
 
 
-    private static  final String BASE_URL ="http://192.168.0.140:1919/";
+    //private static  final String BASE_URL ="http://192.168.0.140:1919/";
 
     public static  final String BASE_URL ="http://10.0.2.2:8080/";
 

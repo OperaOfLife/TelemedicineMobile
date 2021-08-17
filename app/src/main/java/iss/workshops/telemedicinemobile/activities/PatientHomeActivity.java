@@ -34,8 +34,7 @@ public class PatientHomeActivity extends AppCompatActivity {
 
     Intent intentToHistory,intentToDoctors,intentToBook,intentToHealthNews;
 
-    TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth;
-    Context context;
+     Context context;
 
     TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth, textViewUserName;
     Patient patient;
@@ -107,17 +106,14 @@ public class PatientHomeActivity extends AppCompatActivity {
     });
 }
 
-            @Override
-            public void onClick(View v) {
-                startActivity(intentToHealthNews); }
-        });
-    }
 
-    private void getPatientFirstName(String username) {
-        Call<Patient> patientCall = RetrofitClient
-                .getInstance()
-                .getAPI()
-                .getPatients(username);
+
+    private void getPatientFirstName(String username){
+        Call<Patient> patientCall=RetrofitClient
+        .getInstance()
+        .getAPI()
+        .getPatients(username);
+
 
         patientCall.enqueue(new Callback<Patient>() {
 
