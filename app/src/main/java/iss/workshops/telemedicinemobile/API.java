@@ -2,7 +2,12 @@ package iss.workshops.telemedicinemobile;
 
 import java.util.List;
 
+
 import iss.workshops.telemedicinemobile.domain.Doctor;
+
+import iss.workshops.telemedicinemobile.domain.Appointment;
+import iss.workshops.telemedicinemobile.domain.Patient;
+
 import iss.workshops.telemedicinemobile.domain.User;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -23,6 +28,7 @@ public interface API
     Call<User> login(@Query("uname") String username, @Query("pwd") String password);
 
 
+
     //doctors
     @GET("/api/doctor/list")
     Call<List<Doctor>> listDoctors();
@@ -32,3 +38,15 @@ public interface API
 
 
 }
+
+    //KAT - not hardcoded ; username = patientId
+    @GET("api/list")
+    Call<List<Appointment>> getAppointments(@Query("patientId") String username);
+
+
+    //KAT (14/8/2021) - not hardcoded - for retrieving patient details
+    @GET("api/patient")
+    Call<Patient> getPatients(@Query("patientId") String patientId);
+
+}
+

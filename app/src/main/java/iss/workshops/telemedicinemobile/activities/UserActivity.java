@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+
+import android.os.StrictMode;
+import android.util.Log;
+
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,6 +19,7 @@ import android.widget.Toast;
 import iss.workshops.telemedicinemobile.API;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
+import iss.workshops.telemedicinemobile.activities.PatientHomeActivity;
 import iss.workshops.telemedicinemobile.domain.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,6 +77,10 @@ public class UserActivity extends AppCompatActivity {
 
 
                     loginUser(username, password);
+
+                    //KAT (14/8/2021)
+                    intentToPatientHome.putExtra("username", username);
+
                     startActivity(intentToPatientHome);
 
                 }
@@ -85,8 +95,6 @@ public class UserActivity extends AppCompatActivity {
 
     private void loginUser(String username, String password)
     {
-
-
         if (!validate(username, password))
         {
             String toastMessage = "Username or Password are not populated";
@@ -94,17 +102,15 @@ public class UserActivity extends AppCompatActivity {
         }
         else
         {
-
-
             User u = new User();
             u.setUserName(username);
             u.setPassword(password);
 
 
             Call<User> call = RetrofitClient
-                            .getInstance()
-                            .getAPI()
-                            .login(username,password);
+                    .getInstance()
+                    .getAPI()
+                    .login(username,password);
 
 
             userLogin(call);
@@ -114,15 +120,15 @@ public class UserActivity extends AppCompatActivity {
     private boolean validate(String username, String password) {
         if (username.isEmpty() || password.isEmpty())
         {
-          return false;
+            return false;
+
+
         }
         return true;
     }
 
     public void userLogin(Call<User> call)
     {
-
-
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -143,7 +149,7 @@ public class UserActivity extends AppCompatActivity {
 
                 Toast.makeText(UserActivity.this, "Something went wrong! Try again later", Toast.LENGTH_LONG).show();
 
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
             }
         });
     }

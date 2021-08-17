@@ -8,6 +8,7 @@ public class User
     @Expose
     @SerializedName("id")
     private Long id;
+
     @Expose
     @SerializedName("username")
     private String userName;

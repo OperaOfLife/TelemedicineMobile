@@ -14,8 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TelemedicineMobile"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".activities.HealthNews.HealthNewsActivity"></activity>
         <activity android:name=".activities.HealthNews.DetailActivity"></activity>
+
+        <activity android:name=".activities.PatientPrescriptionActivity"></activity>
+        <activity android:name=".activities.PatientMCActivity" />
+        <activity android:name=".activities.HealthNewsActivity" />
+
         <activity android:name=".activities.ConsultationHistoryActivity" />
         <activity android:name=".activities.OurDoctors.DoctorDetailsActivity" />
         <activity android:name=".activities.BookConsultationActivity" />

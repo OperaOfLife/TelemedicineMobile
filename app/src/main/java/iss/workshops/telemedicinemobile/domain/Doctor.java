@@ -1,5 +1,6 @@
 package iss.workshops.telemedicinemobile.domain;
 
+
 public class Doctor {
     private String doctorId;
     private String firstName;
@@ -43,6 +44,40 @@ public class Doctor {
         this.description = description;
     }
 
+import com.google.gson.annotations.Expose;
+
+public class Doctor {
+    @Expose
+    private String doctorId;
+
+    @Expose
+    private String firstName;
+
+    @Expose
+    private String lastName;
+
+    @Expose
+    private String gender;
+
+    @Expose
+    private String mobile;
+
+    @Expose
+    private String email;
+
+    //private List<Appointment> appointmentListDoctor;
+
+
+    public Doctor(String doctorId, String firstName, String lastName, String gender, String mobile, String email) {
+        this.doctorId = doctorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.mobile = mobile;
+        this.email = email;
+    }
+
+
     public String getDoctorId() {
         return doctorId;
     }
@@ -67,6 +102,7 @@ public class Doctor {
         return email;
     }
 
+
     public String getSpeciality() {
         return speciality;
     }
@@ -86,3 +122,7 @@ public class Doctor {
         this.hospital=hospital;
     }
 }
+
+}
+
+
