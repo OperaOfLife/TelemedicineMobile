@@ -2,6 +2,7 @@ package iss.workshops.telemedicinemobile.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -16,6 +17,10 @@ import java.util.List;
 
 import iss.workshops.telemedicinemobile.PatientConsultationHistoryAdapter;
 import iss.workshops.telemedicinemobile.R;
+
+import iss.workshops.telemedicinemobile.activities.HealthNews.HealthNewsActivity;
+import iss.workshops.telemedicinemobile.activities.OurDoctors.DoctorActivity;
+
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.domain.Appointment;
 import iss.workshops.telemedicinemobile.domain.Patient;
@@ -24,11 +29,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class PatientHomeActivity extends AppCompatActivity {
 
     Intent intentToHistory,intentToDoctors,intentToBook,intentToHealthNews;
+
+    TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth;
+    Context context;
+
     TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth, textViewUserName;
     Patient patient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,7 +47,7 @@ public class PatientHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_home);
 
-        intentToDoctors = new Intent(this, OurDoctorsActivity.class);
+        intentToDoctors = new Intent(this, DoctorActivity.class);
         intentToBook = new Intent(this, BookConsultationActivity.class);
         intentToHistory = new Intent(this, ConsultationHistoryActivity.class);
         intentToHealthNews = new Intent(this, HealthNewsActivity.class);
@@ -88,6 +99,14 @@ public class PatientHomeActivity extends AppCompatActivity {
 
         textViewHealth.setOnClickListener(new View.OnClickListener()
         {
+
+        @Override
+        public void onClick(View v) {
+
+        startActivity(intentToHealthNews); }
+    });
+}
+
             @Override
             public void onClick(View v) {
                 startActivity(intentToHealthNews); }
@@ -105,6 +124,7 @@ public class PatientHomeActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Patient> call, Response<Patient> response) {
                 //if method call is successful...
+
 
                 //check response (200-300 = successful; if not means something went wrong e.g. response 404)
                 if (!response.isSuccessful()) {

@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/activity_doctor.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_doctor_details.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_healthNews_detail.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/activity_health_news.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/activity_healthnews_detail.xml" value="0.12590579710144928" />
+        <entry key="app/src/main/res/layout/doctors_list.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/healthNews_item.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/healthnews_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.13043478260869565" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

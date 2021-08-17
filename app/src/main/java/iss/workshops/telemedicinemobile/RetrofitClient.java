@@ -1,12 +1,18 @@
 package iss.workshops.telemedicinemobile;
 
+
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient
 {
 
+
+    private static  final String BASE_URL ="http://192.168.0.140:1919/";
+
     public static  final String BASE_URL ="http://10.0.2.2:8080/";
+
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 
@@ -30,6 +36,5 @@ public class RetrofitClient
 
 
     public API getAPI () {
-        return retrofit.create(API.class);
-    }
+        return retrofit.create(API.class);}
 }
