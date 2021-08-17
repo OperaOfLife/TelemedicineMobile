@@ -108,7 +108,7 @@ public class ConsultationHistoryActivity extends AppCompatActivity {
                 .getAPI()
                 .getAppointments(userName);
 
-        //we call the method on a background thread using enqueue instead of execute to prevent blocking.
+//we call the method on a background thread using enqueue instead of execute to prevent blocking.
         call.enqueue(new Callback<List<Appointment>>() {
 
             @Override

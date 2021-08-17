@@ -19,6 +19,7 @@ import java.util.List;
 import iss.workshops.telemedicinemobile.API;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
+import iss.workshops.telemedicinemobile.activities.PatientHomeActivity;
 import iss.workshops.telemedicinemobile.domain.User;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -110,9 +111,9 @@ public class UserActivity extends AppCompatActivity {
 
 
             Call<User> call = RetrofitClient
-                            .getInstance()
-                            .getAPI()
-                            .login(username,password);
+                    .getInstance()
+                    .getAPI()
+                    .login(username,password);
 
 
             userLogin(call);
@@ -122,7 +123,9 @@ public class UserActivity extends AppCompatActivity {
     private boolean validate(String username, String password) {
         if (username.isEmpty() || password.isEmpty())
         {
-          return false;
+            return false;
+
+
         }
         return true;
     }
@@ -149,7 +152,7 @@ public class UserActivity extends AppCompatActivity {
 
                 Toast.makeText(UserActivity.this, "Something went wrong! Try again later", Toast.LENGTH_LONG).show();
 
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
             }
         });
     }

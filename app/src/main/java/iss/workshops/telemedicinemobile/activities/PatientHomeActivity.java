@@ -69,28 +69,28 @@ public class PatientHomeActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                       startActivity(intentToDoctors); }
+                startActivity(intentToDoctors); }
         });
 
         textViewBook.setOnClickListener(new View.OnClickListener()
         {
-        @Override
-        public void onClick(View v) {
-        startActivity(intentToBook); }
+            @Override
+            public void onClick(View v) {
+                startActivity(intentToBook); }
         });
 
         textViewHistory.setOnClickListener(new View.OnClickListener()
         {
-        @Override
-        public void onClick(View v) {
-        startActivity(intentToHistory); }
+            @Override
+            public void onClick(View v) {
+                startActivity(intentToHistory); }
         });
 
         textViewHealth.setOnClickListener(new View.OnClickListener()
         {
-        @Override
-        public void onClick(View v) {
-        startActivity(intentToHealthNews); }
+            @Override
+            public void onClick(View v) {
+                startActivity(intentToHealthNews); }
         });
     }
 
@@ -108,6 +108,8 @@ public class PatientHomeActivity extends AppCompatActivity {
 
                 //check response (200-300 = successful; if not means something went wrong e.g. response 404)
                 if (!response.isSuccessful()) {
+
+
                     Toast.makeText(getApplicationContext(), "error in response", Toast.LENGTH_LONG).show();
                     return;
                 }
