@@ -12,9 +12,10 @@ public class RetrofitClient
     //private static  final String BASE_URL ="http://192.168.0.140:1919/";
 
     public static  final String BASE_URL ="http://10.0.2.2:8080/";
+    public static  final String BASE_URL_CHAT = "http://192.168.56.1:5000/";
 
     private static RetrofitClient mInstance;
-    private Retrofit retrofit;
+    private Retrofit retrofit,retrofitChat;
 
 
     private RetrofitClient ()
@@ -22,6 +23,11 @@ public class RetrofitClient
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofitChat = new Retrofit.Builder()
+                .baseUrl(BASE_URL_CHAT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
@@ -37,4 +43,7 @@ public class RetrofitClient
 
     public API getAPI () {
         return retrofit.create(API.class);}
+
+    public API getChatAPI () {
+        return retrofitChat.create(API.class);}
 }

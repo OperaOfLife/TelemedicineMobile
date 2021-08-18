@@ -107,6 +107,8 @@ public class UserActivity extends AppCompatActivity {
             u.setPassword(password);
 
 
+
+
             Call<User> call = RetrofitClient
                     .getInstance()
                     .getAPI()

@@ -3,6 +3,7 @@ package iss.workshops.telemedicinemobile;
 import java.util.List;
 
 
+import iss.workshops.telemedicinemobile.activities.ourChatBot.ChatResponse;
 import iss.workshops.telemedicinemobile.domain.Doctor;
 
 import iss.workshops.telemedicinemobile.domain.Appointment;
@@ -36,7 +37,9 @@ public interface API
     @GET("/api/searchDoctor/{keyword}")
     Call<List<Doctor>> searchDoctors(@Path("keyword") String keyword);
 
-
+    @FormUrlEncoded
+    @POST("/chat")
+    Call<ChatResponse> chatWithTheBit(@Field("chatInput") String chatText);
 
 
     //KAT - not hardcoded ; username = patientId
