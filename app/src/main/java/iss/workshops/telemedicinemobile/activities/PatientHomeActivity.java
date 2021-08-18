@@ -22,6 +22,7 @@ import iss.workshops.telemedicinemobile.activities.HealthNews.HealthNewsActivity
 import iss.workshops.telemedicinemobile.activities.OurDoctors.DoctorActivity;
 
 import iss.workshops.telemedicinemobile.RetrofitClient;
+import iss.workshops.telemedicinemobile.activities.ourChatBot.ChatBotMainActivity;
 import iss.workshops.telemedicinemobile.domain.Appointment;
 import iss.workshops.telemedicinemobile.domain.Patient;
 import iss.workshops.telemedicinemobile.domain.User;
@@ -32,11 +33,11 @@ import retrofit2.Response;
 
 public class PatientHomeActivity extends AppCompatActivity {
 
-    Intent intentToHistory,intentToDoctors,intentToBook,intentToHealthNews;
+    Intent intentToHistory,intentToDoctors,intentToBook,intentToHealthNews,intentToChatBot;
 
      Context context;
 
-    TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth, textViewUserName;
+    TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth, textViewUserName,textViewChatBot;
     Patient patient;
 
 
@@ -50,16 +51,19 @@ public class PatientHomeActivity extends AppCompatActivity {
         intentToBook = new Intent(this, BookConsultationActivity.class);
         intentToHistory = new Intent(this, ConsultationHistoryActivity.class);
         intentToHealthNews = new Intent(this, HealthNewsActivity.class);
+        intentToChatBot = new Intent(this, ChatBotMainActivity.class);
 
         textViewDoctors = findViewById(R.id.ourDoctors);
         textViewBook = findViewById(R.id.bookConsultation);
         textViewHistory = findViewById(R.id.consultationHistory);
         textViewHealth = findViewById(R.id.healthNews);
+        textViewChatBot = findViewById(R.id.chatBot);
 
         textViewDoctors.setMovementMethod(LinkMovementMethod.getInstance());
         textViewHistory.setMovementMethod(LinkMovementMethod.getInstance());
         textViewBook.setMovementMethod(LinkMovementMethod.getInstance());
         textViewHealth.setMovementMethod(LinkMovementMethod.getInstance());
+        textViewChatBot.setMovementMethod(LinkMovementMethod.getInstance());
 
         //KAT (14/8/2021) - get patient user name to display on top right of activity
         Intent response = getIntent();
@@ -104,6 +108,13 @@ public class PatientHomeActivity extends AppCompatActivity {
 
         startActivity(intentToHealthNews); }
     });
+
+        textViewChatBot.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                startActivity(intentToChatBot); }
+        });
 }
 
 
