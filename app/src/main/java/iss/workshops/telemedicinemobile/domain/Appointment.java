@@ -2,6 +2,7 @@ package iss.workshops.telemedicinemobile.domain;
 
 import com.google.gson.annotations.Expose;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Appointment {
@@ -35,6 +36,38 @@ public class Appointment {
         this.doctor = doctor;
         this.patient = patient;
         this.prescription = prescription;
+        this.mc = mc;
+    }
+
+    public Appointment() {
+
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAppointmentDate(Date appointmentDate) {
+        this.appointmentDate = appointmentDate;
+    }
+
+    public void setAppointmentTime(String appointmentTime) {
+        this.appointmentTime = appointmentTime;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public void setPrescription(Prescription prescription) {
+        this.prescription = prescription;
+    }
+
+    public void setMc(MedicalCertificate mc) {
         this.mc = mc;
     }
 

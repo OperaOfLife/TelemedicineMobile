@@ -2,7 +2,9 @@ package iss.workshops.telemedicinemobile.domain;
 
 import com.google.gson.annotations.Expose;
 
-public class Patient {
+import java.io.Serializable;
+
+public class Patient implements Serializable {
     @Expose
     private String patientId;
 

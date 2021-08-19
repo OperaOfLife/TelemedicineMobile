@@ -20,6 +20,7 @@ import iss.workshops.telemedicinemobile.API;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.activities.PatientHomeActivity;
+import iss.workshops.telemedicinemobile.domain.Patient;
 import iss.workshops.telemedicinemobile.domain.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +31,7 @@ public class UserActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
-    Intent intentToPatientHome;
+    Intent intentToPatientHome,intentToBookConsultation;
 
     private API api;
 
@@ -78,7 +79,7 @@ public class UserActivity extends AppCompatActivity {
 
                     loginUser(username, password);
 
-                    //KAT (14/8/2021)
+
                     intentToPatientHome.putExtra("username", username);
 
                     startActivity(intentToPatientHome);
@@ -137,11 +138,14 @@ public class UserActivity extends AppCompatActivity {
                 if (response.code()== 200)
                 {
                     String msg= "Successful" + response.code();
+
                     Toast.makeText(UserActivity.this, msg, Toast.LENGTH_LONG).show();
 
 
                 }
                 else {
+
+
                     Toast.makeText(UserActivity.this, "UNSuccessful", Toast.LENGTH_LONG).show();
                 }
             }

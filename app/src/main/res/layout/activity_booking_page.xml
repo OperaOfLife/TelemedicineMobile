@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="@color/black"
+        android:text="Doctor's Name: "
+        android:textSize="16dp"/>
+    <TextView
+        android:id="@+id/doctorname"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:hint="Doctor's Name"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Patient's Name: "
+        android:textColor="@color/black"
+        android:textSize="16dp"/>
+    <TextView
+        android:id="@+id/patientname"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:hint="Patient's Name"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="30dp">
+        <EditText
+            android:id="@+id/etCalender"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:hint="Select Date"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/timeslots"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/book"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="Book"
+        android:background="@drawable/button"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>

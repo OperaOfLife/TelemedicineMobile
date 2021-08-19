@@ -1,5 +1,6 @@
 package iss.workshops.telemedicinemobile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -41,13 +42,17 @@ public interface API
     @POST("/chat")
     Call<ChatResponse> chatWithTheBit(@Field("chatInput") String chatText);
 
+    @GET("/appointmentRest/getAllDoctors")
+    Call<ArrayList<Doctor>> doctors();
 
-    //KAT - not hardcoded ; username = patientId
+    @POST("/appointmentRest/setAppointment")
+    Call<Appointment> postAppointment(@Body Appointment appointment);
+
     @GET("api/list")
     Call<List<Appointment>> getAppointments(@Query("patientId") String username);
 
 
-    //KAT (14/8/2021) - not hardcoded - for retrieving patient details
+
     @GET("api/patient")
     Call<Patient> getPatients(@Query("patientId") String patientId);
 

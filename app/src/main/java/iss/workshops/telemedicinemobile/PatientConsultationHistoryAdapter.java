@@ -102,10 +102,7 @@ public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<Pati
 
             //place respective widgets into viewholders
             date = itemView.findViewById(R.id.tv_consultationDate);
-            viewPrescription =
-
-
-            itemView.findViewById(R.id.btn_viewPrescription);
+            viewPrescription =itemView.findViewById(R.id.btn_viewPrescription);
             viewMc = itemView.findViewById(R.id.btn_viewMc);
 
         }

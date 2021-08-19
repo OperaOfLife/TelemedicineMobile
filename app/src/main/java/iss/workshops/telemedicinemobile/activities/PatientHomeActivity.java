@@ -39,6 +39,7 @@ public class PatientHomeActivity extends AppCompatActivity {
 
     TextView textViewDoctors,textViewHistory,textViewBook,textViewHealth, textViewUserName,textViewChatBot;
     Patient patient;
+    String username;
 
 
     @Override
@@ -69,7 +70,7 @@ public class PatientHomeActivity extends AppCompatActivity {
         Intent response = getIntent();
         if (response != null) {
             //get patient first name from username
-            String username = response.getStringExtra("username");
+            username = response.getStringExtra("username");
             getPatientFirstName(username);
             textViewUserName = findViewById(R.id.tv_userName);
 
@@ -90,7 +91,8 @@ public class PatientHomeActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                startActivity(intentToBook); }
+                getPatients(username);
+                 }
         });
 
         textViewHistory.setOnClickListener(new View.OnClickListener()
@@ -117,6 +119,44 @@ public class PatientHomeActivity extends AppCompatActivity {
         });
 }
 
+
+    private void getPatients(String username) {
+
+        Call<Patient> bookCall = RetrofitClient
+                .getInstance()
+                .getAPI()
+                .getPatients(username);
+
+        bookCall.enqueue(new Callback<Patient>() {
+
+            @Override
+            public void onResponse(Call<Patient> call, Response<Patient> response) {
+                //if method call is successful...
+
+
+                //check response (200-300 = successful; if not means something went wrong e.g. response 404)
+                if (!response.isSuccessful()) {
+
+
+                    Toast.makeText(getApplicationContext(), "error in response", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                patient = response.body();
+
+                //send user details over
+                intentToBook.putExtra("patients", patient);
+                startActivity(intentToBook);
+
+            }
+            @Override
+            public void onFailure(Call<Patient> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
+
+
+    }
 
 
     private void getPatientFirstName(String username){

@@ -1,7 +1,9 @@
 package iss.workshops.telemedicinemobile.domain;
 
 
-public class Doctor {
+import java.io.Serializable;
+
+public class Doctor implements Serializable {
     private String doctorId;
     private String firstName;
     private String lastName;
