@@ -42,11 +42,14 @@ public interface API
     @POST("/chat")
     Call<ChatResponse> chatWithTheBit(@Field("chatInput") String chatText);
 
+    @POST("/appointmentRest/setAppointment")
+    Call<Response<String>> postAppointment(@Body Appointment appointment, @Query("date") String date);
+
     @GET("/appointmentRest/getAllDoctors")
     Call<ArrayList<Doctor>> doctors();
 
-    @POST("/appointmentRest/setAppointment")
-    Call<Appointment> postAppointment(@Body Appointment appointment);
+    /*@POST("/appointmentRest/setAppointment")
+    Call<Appointment> postAppointment(@Body Appointment appointment);*/
 
     @GET("api/list")
     Call<List<Appointment>> getAppointments(@Query("patientId") String username);

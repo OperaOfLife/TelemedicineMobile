@@ -26,6 +26,7 @@ import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.domain.Appointment;
 import iss.workshops.telemedicinemobile.domain.Doctor;
 import iss.workshops.telemedicinemobile.domain.Patient;
+import iss.workshops.telemedicinemobile.domain.TimeSlots;
 import iss.workshops.telemedicinemobile.domain.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,6 +46,9 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
     EditText mCalender;
     LocalDate xDate;
     String date;
+    String newDate;
+    String currentDate = " ";
+    TextView mStatus;
 
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -69,6 +73,7 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
             private void displayHeaders(){
                 mUser = findViewById(R.id.patientname);
                 mDoctor = findViewById(R.id.doctorname);
+                mStatus = findViewById(R.id.status);
 
                 if(mUser != null && mDoctor != null){
                     mUser.setText(inPatient.getFirstName()+" "+ inPatient.getLastName());
@@ -86,20 +91,22 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
                 final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
+
+
                 mCalender.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DatePickerDialog datePickerDialog = new DatePickerDialog(BookingPageActivity.this, new DatePickerDialog.OnDateSetListener() {
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                                BookingPageActivity.this, new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int day) {
                                 month = month +1;
                                 //8/7/1993
-                                 date = day + "-" + month + "-" + year;
+                                date = day + "-" + month + "-" + year;
                                 mCalender.setText(date);
-
-                                xDate = LocalDate.of(year,month,day);
-
-
+                                calendar.set(year,month-1,day);
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                                newDate = sdf.format(calendar.getTime());
                             }
                         },year,month,day);
                         datePickerDialog.show();
@@ -109,20 +116,10 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
             }
 
             private void setUpTimeSlots(){
-                mTimeslots = findViewById(R.id.timeslots);
+                mTimeslots = (Spinner)findViewById(R.id.timeslots);
 
-                //timeslots here
-                //hardcode for now
-                String[] timeslots = {
-                        "7.30 - 8.00",
-                        "8.00 - 8.30",
-                        "8.30 - 9.00",
-                        "9.00 - 9.30",
-                        "9.30 - 10.00",
-                        "10.00 - 10.30",
-                };
                 //basic adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, timeslots);
+                ArrayAdapter<TimeSlots> adapter = new ArrayAdapter<TimeSlots>(this, R.layout.support_simple_spinner_dropdown_item, TimeSlots.values());
                 mTimeslots.setAdapter(adapter);
             }
             private void setUpButton(){
@@ -130,63 +127,50 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
                 mBook.setOnClickListener(this);
             }
 
-            @Override
-            public void onClick(View v) {
-                setUpAppointment();
+
+
+    @Override
+    public void onClick(View v) {
+        setUpAppointment();
+    }
+    protected void setUpAppointment(){
+        //create new appointment to store doctor and appointment date.
+        if(doctor != null && newDate != null) {
+            //validate if repeating date and supposedly timeslot
+            if(currentDate.equals(newDate)){
+                Toast.makeText(BookingPageActivity.this,"Duplicated Date time slot",Toast.LENGTH_SHORT).show();
             }
-
-            protected void setUpAppointment(){
-
-
-                //create new appointment to store doctor and appointment date.
-                if(doctor != null && xDate != null) {
-
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    //Date  someDate=formatter.parse(date)
-                    //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
-                    //LocalDate someDate = LocalDate.parse(xDate,formatter);
-                    Appointment appointment = new Appointment();
-                    appointment.setDoctor(doctor);
-                    appointment.setPatient(inPatient);
-                    //THE ERROR IS HERE---------------------------------------------------------------------------------------------------------------------------------------------------------
-                    //appointment.setAppointmentDate(xDate);
-
-
-                    Call<Appointment> call = RetrofitClient
-                            .getInstance()
-                            .getAPI()
-                            .postAppointment(appointment);
-
-                    postAppointment(call);
-                }
-
+            else {
+                currentDate = newDate;
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
+                //LocalDate someDate = LocalDate.parse(xDate,formatter);
+                Appointment appointment = new Appointment();
+                appointment.setDoctor(doctor);
+                appointment.setPatient(inPatient);
+                Call<Response<String>> call = RetrofitClient
+                        .getInstance()
+                        .getAPI()
+                        .postAppointment(appointment, newDate);
+                postAppointment(call);
             }
-            private void postAppointment(Call<Appointment> call){
-
-                call.enqueue(new Callback<Appointment>() {
-                    @Override
-                    public void onResponse(Call<Appointment> call, Response<Appointment> response) {
-                        if(!response.isSuccessful())
-                            Toast.makeText(BookingPageActivity.this, "Unsuccessful" + response.code(), Toast.LENGTH_SHORT).show();
-
-                        //post appontment
-                        Appointment postAppointment = response.body();
-                        String content = "";
-
-                        if(postAppointment.getDoctor() != null){
-                            content += postAppointment.getAppointmentDate() + "is already taken \n";
-                        }
-                        content += "Dr. " + postAppointment.getDoctor().getFirstName() +" Booked \n";
-
-                        Toast.makeText(BookingPageActivity.this, content, Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Appointment> call, Throwable t) {
-                        t.getStackTrace();
-                    }
-                });
-            }
-
-
         }
+    }
+    private void postAppointment(Call<Response<String>> call) {
+
+        call.enqueue(new Callback<Response<String>>() {
+            @Override
+            public void onResponse(Call<Response<String>> call, Response<Response<String>> response) {
+                if (!response.isSuccessful())
+                    Toast.makeText(BookingPageActivity.this, "Unsuccessful" + response.code(), Toast.LENGTH_SHORT).show();
+                String res = response.body().toString();
+                mStatus.setText(res);
+            }
+
+            @Override
+            public void onFailure(Call<Response<String>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+
+    } }
