@@ -90,5 +90,15 @@
                         android:text="Symptom Checker"
                         android:textSize="24sp"
                         android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="Dashboard"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
                 </LinearLayout>
 </RelativeLayout>

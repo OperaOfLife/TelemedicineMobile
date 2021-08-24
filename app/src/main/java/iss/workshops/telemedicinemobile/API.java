@@ -59,5 +59,18 @@ public interface API
     @GET("api/patient")
     Call<Patient> getPatients(@Query("patientId") String patientId);
 
+    //ddashboard APIs
+    @GET("/todaysize")
+    Call<Integer> getTodayNum();
+
+    @GET("/numofpatients")
+    Call<Integer> getNumOfPatients();
+
+    @GET("/numofdoctors")
+    Call<Integer> getNumOfDoctors();
+
+    @GET("/numofappointments")
+    Call<ArrayList<Integer>> getNumofAppointments();
+
 }
 
