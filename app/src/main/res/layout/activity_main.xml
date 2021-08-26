@@ -36,8 +36,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <LinearLayout
                 android:orientation="vertical"
                 android:padding="10dp"
                 android:layout_width="match_parent"
@@ -49,16 +48,18 @@
                     android:layout_height="100dp"
                     android:orientation="horizontal"
                     android:padding="10dp">
+
                     <TextView
+                        android:id="@+id/Aname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_weight="10"
+                        android:padding="10dp"
                         android:text="GushBoard"
                         android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="30dp"
-                        android:padding="10dp"
-                        android:layout_weight="10"/>
-<!--                    <TextView-->
+                        android:textStyle="bold" />
+                    <!--                    <TextView-->
 <!--                        android:id="@+id/homepage"-->
 <!--                        android:layout_width="wrap_content"-->
 <!--                        android:layout_height="wrap_content"-->

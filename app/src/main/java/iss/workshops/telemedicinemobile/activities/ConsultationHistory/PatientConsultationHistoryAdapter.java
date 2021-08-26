@@ -1,4 +1,4 @@
-package iss.workshops.telemedicinemobile;
+package iss.workshops.telemedicinemobile.activities.ConsultationHistory;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,8 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import iss.workshops.telemedicinemobile.activities.PatientMCActivity;
-import iss.workshops.telemedicinemobile.activities.PatientPrescriptionActivity;
+import iss.workshops.telemedicinemobile.R;
+import iss.workshops.telemedicinemobile.activities.ConsultationHistory.PatientMCActivity;
+import iss.workshops.telemedicinemobile.activities.ConsultationHistory.PatientPrescriptionActivity;
 import iss.workshops.telemedicinemobile.domain.Appointment;
 
 public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<PatientConsultationHistoryAdapter.MyViewHolder> {
@@ -51,10 +53,15 @@ public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<Pati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PatientPrescriptionActivity.class);
-                intent.putExtra("prescriptionId", appointmentList.get(position).getPrescription().getPrescriptionId());
-                intent.putExtra("prescriptionMedicine", appointmentList.get(position).getPrescription().getMedicine());
-                intent.putExtra("prescriptionRemarks", appointmentList.get(position).getPrescription().getRemarks());
-                v.getContext().startActivity(intent);
+                if (appointmentList.get(position).getPrescription() != null) {
+                    intent.putExtra("prescriptionId", appointmentList.get(position).getPrescription().getPrescriptionId());
+                    intent.putExtra("prescriptionMedicine", appointmentList.get(position).getPrescription().getMedicine());
+                    intent.putExtra("prescriptionRemarks", appointmentList.get(position).getPrescription().getRemarks());
+                    v.getContext().startActivity(intent);
+                }
+                else {
+                    Toast.makeText(mContext.getApplicationContext(), "No Prescription Found", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -70,8 +77,11 @@ public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<Pati
                     String dateTo_Formatted = sdf.format(appointmentList.get(position).getMc().getDateTo());
                     intent.putExtra("mcDateTo", dateTo_Formatted);
                     intent.putExtra("mcDuration", appointmentList.get(position).getMc().getDuration());
+                    v.getContext().startActivity(intent);
                 }
-                v.getContext().startActivity(intent);
+                else {
+                    Toast.makeText(mContext.getApplicationContext(), "No MC Found", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

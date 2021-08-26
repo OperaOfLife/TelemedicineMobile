@@ -17,7 +17,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import iss.workshops.telemedicinemobile.API;
-import iss.workshops.telemedicinemobile.activities.ConsultationHistory.PatientConsultationHistoryAdapter;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.domain.Appointment;

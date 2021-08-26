@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TelemedicineMobile.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.DashBoardActivity"></activity>
+        <activity android:name=".activities.PatientClinicListActivity"></activity>
+        <activity android:name=".activities.LocateClinicsActivity" />
+        <activity android:name=".activities.DashBoardActivity" />
         <activity android:name=".activities.BookConsultation.BookingPageActivity" />
         <activity android:name=".activities.ourChatBot.ChatBotMainActivity" />
         <activity android:name=".activities.HealthNews.HealthNewsActivity" />

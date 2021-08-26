@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LocateClinicsActivity">
+
+
+
+<TextView
+    android:id="@+id/header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Search by zone"
+    android:textSize="40sp"
+    android:layout_marginTop="30dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/northButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginTop="28dp"
+    android:text=" North "
+    android:textAllCaps="false"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/header" />
+
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/southButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:text=" South "
+    android:textAllCaps="false"
+    app:layout_constraintLeft_toRightOf="@id/northButton"
+    app:layout_constraintTop_toTopOf="@id/northButton" />
+
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/eastButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:text=" East "
+    android:textAllCaps="false"
+    app:layout_constraintLeft_toRightOf="@id/southButton"
+    app:layout_constraintTop_toTopOf="@id/northButton" />
+
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/westButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:text=" West "
+    android:textAllCaps="false"
+    app:layout_constraintLeft_toRightOf="@id/eastButton"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="@id/northButton" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBar" />
+
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/northButton" />
+
+
+    <ImageView
+        android:id="@+id/searchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_search"
+        app:layout_constraintLeft_toRightOf="@id/searchBar"
+        app:layout_constraintTop_toBottomOf="@id/northButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

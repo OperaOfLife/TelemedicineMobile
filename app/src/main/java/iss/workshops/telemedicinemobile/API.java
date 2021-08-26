@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import iss.workshops.telemedicinemobile.activities.ourChatBot.ChatResponse;
+import iss.workshops.telemedicinemobile.domain.Clinic;
 import iss.workshops.telemedicinemobile.domain.Doctor;
 
 import iss.workshops.telemedicinemobile.domain.Appointment;
@@ -71,6 +72,19 @@ public interface API
 
     @GET("/numofappointments")
     Call<ArrayList<Integer>> getNumofAppointments();
+
+
+    //KAT (24/8/2021) - not hardcoded - for retrieving clinics by zone
+    @GET("api/clinics")
+    Call<List<Clinic>> getClinics(@Query("zone") String zone);
+
+    //KAT (25/8/2021) - not hardcoded - for retrieving all clinics
+    @GET("api/allclinics")
+    Call<List<Clinic>> getAllClinics();
+
+    //KAT (26/8/2021) - not hardcoded - for retrieving searched clinics
+    @GET("api/searchedclinics")
+    Call<List<Clinic>> getSearchedClinics(@Query("searchValue") String searchValue);
 
 }
 

@@ -52,10 +52,9 @@ public class UserActivity extends AppCompatActivity {
 
 
         loginButton = findViewById(R.id.login_button);
-        usernameTIL=(TextInputLayout) findViewById(R.id.login_name_layout);
-        passwordTIL=(TextInputLayout) findViewById(R.id.login_password_layout);
-        username = usernameTIL.getEditText().getText().toString();
-        password = passwordTIL.getEditText().getText().toString();
+        usernameTIL= findViewById(R.id.login_name_layout);
+        passwordTIL= findViewById(R.id.login_password_layout);
+
 
 
         SharedPreferences pref = getSharedPreferences("user_credentials" , MODE_PRIVATE);
@@ -64,8 +63,8 @@ public class UserActivity extends AppCompatActivity {
             String user = pref.getString("username","");
             String pwd= pref.getString("password","");
 
-            usernameTIL.getEditText().setText("username");
-            passwordTIL.getEditText().setText("password");
+            usernameTIL.getEditText().setText(user);
+            passwordTIL.getEditText().setText(pwd);
 
         }
 
@@ -76,7 +75,8 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                username = usernameTIL.getEditText().getText().toString();
+                password = passwordTIL.getEditText().getText().toString();
                 if (usernameTIL.getEditText().getText().length() > 0 && passwordTIL.getEditText().getText().length() > 0) {
 
 

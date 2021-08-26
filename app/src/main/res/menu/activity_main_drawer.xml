@@ -26,6 +26,10 @@
                     android:id="@+id/nav_healthnews"
                     android:icon="@drawable/ic_healthnews"
                     android:title="Health News" />
+                <item
+                    android:id="@+id/nav_locate"
+                    android:icon="@drawable/ic_healthnews"
+                    android:title="Locate Clinics" />
 
             </menu>
         </item>
