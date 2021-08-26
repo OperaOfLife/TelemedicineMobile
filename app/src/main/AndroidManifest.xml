@@ -12,21 +12,24 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TelemedicineMobile"
+        android:theme="@style/Theme.TelemedicineMobile.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.DashBoardActivity"></activity>
-        <activity android:name=".activities.BookingPageActivity" />
+        <activity android:name=".activities.BookConsultation.BookingPageActivity" />
         <activity android:name=".activities.ourChatBot.ChatBotMainActivity" />
         <activity android:name=".activities.HealthNews.HealthNewsActivity" />
         <activity android:name=".activities.HealthNews.DetailActivity" />
-        <activity android:name=".activities.PatientPrescriptionActivity" />
-        <activity android:name=".activities.PatientMCActivity" />
-        <activity android:name=".activities.ConsultationHistoryActivity" />
+        <activity android:name=".activities.ConsultationHistory.PatientPrescriptionActivity" />
+        <activity android:name=".activities.ConsultationHistory.PatientMCActivity" />
+        <activity android:name=".activities.ConsultationHistory.ConsultationHistoryActivity" />
         <activity android:name=".activities.OurDoctors.DoctorDetailsActivity" />
-        <activity android:name=".activities.BookConsultationActivity" />
+        <activity android:name=".activities.BookConsultation.BookConsultationActivity" />
         <activity android:name=".activities.OurDoctors.DoctorActivity" />
         <activity android:name=".activities.PatientHomeActivity" />
-        <activity android:name=".activities.UserActivity">
+        <activity android:name=".activities.UserActivity"/>
+
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PatientPrescriptionActivity">
+    tools:context=".activities.ConsultationHistory.PatientPrescriptionActivity">
 
     <TextView
         android:id="@+id/prescription_title"

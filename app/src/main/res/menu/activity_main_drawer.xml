@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="menu">
+            <menu>
+                <item
+                    android:id="@+id/nav_SymptomChecker"
+                    android:icon="@drawable/ic_chat"
+                    android:title="Symptom Checker" />
+                <item
+                    android:id="@+id/nav_OurDoctors"
+                    android:icon="@drawable/ic_doctors"
+                    android:title="Our Doctors" />
+                <item
+                    android:id="@+id/nav_BookConsultation"
+                    android:icon="@drawable/ic_appointment"
+                    android:title="Book Consultation" />
+                <item
+                    android:id="@+id/nav_ConsultationHistory"
+                    android:icon="@drawable/ic_history2"
+                    android:title="Consultation History" />
+                <item
+                    android:id="@+id/nav_healthnews"
+                    android:icon="@drawable/ic_healthnews"
+                    android:title="Health News" />
+
+            </menu>
+        </item>
+
+
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="option">
+            <menu>
+             <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="logout" />
+            </menu>
+        </item>
+    </group>
+</menu>

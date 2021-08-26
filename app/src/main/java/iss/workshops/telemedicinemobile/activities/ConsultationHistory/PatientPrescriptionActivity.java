@@ -1,4 +1,4 @@
-package iss.workshops.telemedicinemobile.activities;
+package iss.workshops.telemedicinemobile.activities.ConsultationHistory;
 
 import androidx.appcompat.app.AppCompatActivity;
 

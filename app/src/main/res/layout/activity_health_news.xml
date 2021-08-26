@@ -9,11 +9,12 @@
     <TextView
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:id="@+id/title"
+        android:id="@+id/health_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
         android:text="Health News"
+        android:textColor="@color/black"
 
         android:textSize="20dp"
         android:textStyle="bold"
@@ -21,13 +22,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
 
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/health_title"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"/>

@@ -3,16 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_appointment.xml" value="0.12777777777777777" />
+        <entry key="app/src/main/res/drawable/ic_doctors.xml" value="0.13645833333333332" />
+        <entry key="app/src/main/res/drawable/ic_healthnews.xml" value="0.13703703703703704" />
+        <entry key="app/src/main/res/drawable/ic_history.xml" value="0.13703703703703704" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1359375" />
+        <entry key="app/src/main/res/layout/activity_book_consultation.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/activity_consultation_history.xml" value="0.12681159420289856" />
+        <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.12681159420289856" />
         <entry key="app/src/main/res/layout/activity_doctor.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_doctor_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_healthNews_detail.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_health_news.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_healthnews_detail.xml" value="0.12590579710144928" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_our_doctors.xml" value="0.12681159420289856" />
+        <entry key="app/src/main/res/layout/activity_patient_home.xml" value="0.12681159420289856" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.11458333333333333" />
+        <entry key="app/src/main/res/layout/activity_user.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/doctors_list.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/healthNews_item.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/healthnews_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.11979166666666667" />
         <entry key="app/src/main/res/layout/test.xml" value="0.13043478260869565" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.11979166666666667" />
       </map>
     </option>
   </component>

@@ -1,4 +1,4 @@
-package iss.workshops.telemedicinemobile.activities;
+package iss.workshops.telemedicinemobile.activities.ConsultationHistory;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import iss.workshops.telemedicinemobile.API;
-import iss.workshops.telemedicinemobile.PatientConsultationHistoryAdapter;
+import iss.workshops.telemedicinemobile.activities.ConsultationHistory.PatientConsultationHistoryAdapter;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.domain.Appointment;
@@ -63,7 +63,7 @@ public class ConsultationHistoryActivity extends AppCompatActivity {
         //get patient first name from username
         getPatientFirstName(userName);
 
-        patientFirstName = findViewById(R.id.tv_patientFirstName);
+
 
         //get appointment details for appointment date, prescription and mc
         getAppointmentDetails(userName);
