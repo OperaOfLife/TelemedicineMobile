@@ -32,9 +32,9 @@ public class PatientMCActivity extends AppCompatActivity {
         TextView mcDateTo = findViewById(R.id.dateTo);
         TextView mcDuration = findViewById(R.id.duration);
         TableLayout table = findViewById(R.id.table);
-        TextView noMC = findViewById(R.id.noMC);
+        //TextView noMC = findViewById(R.id.noMC);
 
-        noMC.setVisibility(View.INVISIBLE);
+        //noMC.setVisibility(View.INVISIBLE);
 
         if (id != null) {
             if (mcId != null)
@@ -49,10 +49,10 @@ public class PatientMCActivity extends AppCompatActivity {
             if (mcDuration != null && duration != 0)
                 mcDuration.setText(String.valueOf(duration) + " day(s)");
         }
-        else {
-            table.setVisibility(View.INVISIBLE);
-            noMC.setVisibility(View.VISIBLE);
-        }
+//        else {
+//            table.setVisibility(View.INVISIBLE);
+//            noMC.setVisibility(View.VISIBLE);
+//        }
 
         //set up Back button for activity
         setupBackBtn();
