@@ -43,7 +43,7 @@ public interface API
     Call<ChatResponse> chatWithTheBit(@Field("chatInput") String chatText);
 
     @POST("/appointmentRest/setAppointment")
-    Call<Response<String>> postAppointment(@Body Appointment appointment, @Query("date") String date);
+    Call<Appointment> postAppointment(@Body Appointment appointment, @Query("date") String date);
 
     @GET("/appointmentRest/getAllDoctors")
     Call<ArrayList<Doctor>> doctors();

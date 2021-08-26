@@ -1,4 +1,4 @@
-package iss.workshops.telemedicinemobile.activities.ConsultationHistory;
+package iss.workshops.telemedicinemobile;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import iss.workshops.telemedicinemobile.R;
+import iss.workshops.telemedicinemobile.activities.PatientMCActivity;
+import iss.workshops.telemedicinemobile.activities.PatientPrescriptionActivity;
 import iss.workshops.telemedicinemobile.domain.Appointment;
 
 public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<PatientConsultationHistoryAdapter.MyViewHolder> {

@@ -36,6 +36,7 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
     TextView mDoctor;
     AppCompatButton mBook;
     Spinner mTimeslots;
+    TimeSlots selected;
 
     Patient inPatient;
     Doctor doctor;
@@ -118,6 +119,7 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
                 //basic adapter
                 ArrayAdapter<TimeSlots> adapter = new ArrayAdapter<TimeSlots>(this, R.layout.support_simple_spinner_dropdown_item, TimeSlots.values());
                 mTimeslots.setAdapter(adapter);
+
             }
             private void setUpButton(){
                 mBook = (AppCompatButton) findViewById(R.id.book);
@@ -139,12 +141,14 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
             }
             else {
                 currentDate = newDate;
+                selected = (TimeSlots) mTimeslots.getSelectedItem();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
                 //LocalDate someDate = LocalDate.parse(xDate,formatter);
                 Appointment appointment = new Appointment();
                 appointment.setDoctor(doctor);
                 appointment.setPatient(inPatient);
-                Call<Response<String>> call = RetrofitClient
+                appointment.setAppointmentTime(selected);
+                Call<Appointment> call = RetrofitClient
                         .getInstance()
                         .getAPI()
                         .postAppointment(appointment, newDate);
@@ -152,20 +156,21 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
             }
         }
     }
-    private void postAppointment(Call<Response<String>> call) {
+    private void postAppointment(Call<Appointment> call) {
 
-        call.enqueue(new Callback<Response<String>>() {
+        call.enqueue(new Callback<Appointment>() {
             @Override
-            public void onResponse(Call<Response<String>> call, Response<Response<String>> response) {
-                if (!response.isSuccessful())
-                    Toast.makeText(BookingPageActivity.this, "Unsuccessful" + response.code(), Toast.LENGTH_SHORT).show();
-                String res = response.body().toString();
-                mStatus.setText(res);
-                //kki
+            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
+                if(!response.isSuccessful())
+                    Toast.makeText(BookingPageActivity.this, "Unsuccessful "+response.code(), Toast.LENGTH_SHORT).show();
+                Appointment appoint = response.body();
+                String content = " ";
+                content += "Appointment set";
+                mStatus.setText(content);
             }
 
             @Override
-            public void onFailure(Call<Response<String>> call, Throwable t) {
+            public void onFailure(Call<Appointment> call, Throwable t) {
                 t.printStackTrace();
             }
         });
