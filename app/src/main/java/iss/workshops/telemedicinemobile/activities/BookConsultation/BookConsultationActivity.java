@@ -1,4 +1,4 @@
-package iss.workshops.telemedicinemobile.activities;
+package iss.workshops.telemedicinemobile.activities.BookConsultation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +13,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import iss.workshops.telemedicinemobile.API;
-import iss.workshops.telemedicinemobile.BookCustomAdapter;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.domain.Doctor;
@@ -43,7 +42,7 @@ public class BookConsultationActivity extends AppCompatActivity {
         //get intent
         Intent intent = getIntent();
 
-        Patient patient = (Patient) intent.getSerializableExtra("patients");
+        Patient patient = (Patient) intent.getSerializableExtra("patient");
         mUsername = findViewById(R.id.username);
         if (mUsername != null) {
             mUsername.setText(patient.getFirstName() + " " + patient.getLastName());
@@ -52,7 +51,7 @@ public class BookConsultationActivity extends AppCompatActivity {
             lvDoctor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    intentToBookingPage = new Intent(BookConsultationActivity.this,BookingPageActivity.class);
+                    intentToBookingPage = new Intent(BookConsultationActivity.this, BookingPageActivity.class);
                     //send selected doctor and user details to booking page
                     intentToBookingPage.putExtra("doctor", doctors.get(position));
                     intentToBookingPage.putExtra("patient", patient);

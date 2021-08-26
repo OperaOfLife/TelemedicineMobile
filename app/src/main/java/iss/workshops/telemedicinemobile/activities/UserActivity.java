@@ -16,7 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import iss.workshops.telemedicinemobile.API;
+import iss.workshops.telemedicinemobile.MainActivity;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.activities.PatientHomeActivity;
@@ -28,25 +31,31 @@ import retrofit2.Response;
 
 public class UserActivity extends AppCompatActivity {
 
+    TextInputLayout usernameTIL;
+    TextInputLayout passwordTIL;
+
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
     Intent intentToPatientHome,intentToBookConsultation;
 
+    String username;
+    String password;
     private API api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_login);
 
-        intentToPatientHome = new Intent(this, PatientHomeActivity.class);
-
-        usernameEditText = findViewById(R.id.activity_main_usernameEditText);
-        passwordEditText = findViewById(R.id.activity_main_passwordEditText);
-        loginButton = findViewById(R.id.activity_main_loginButton);
+        intentToPatientHome = new Intent(this, MainActivity.class);
 
 
+        loginButton = findViewById(R.id.login_button);
+        usernameTIL=(TextInputLayout) findViewById(R.id.login_name_layout);
+        passwordTIL=(TextInputLayout) findViewById(R.id.login_password_layout);
+        username = usernameTIL.getEditText().getText().toString();
+        password = passwordTIL.getEditText().getText().toString();
 
 
         SharedPreferences pref = getSharedPreferences("user_credentials" , MODE_PRIVATE);
@@ -55,8 +64,9 @@ public class UserActivity extends AppCompatActivity {
             String user = pref.getString("username","");
             String pwd= pref.getString("password","");
 
-            usernameEditText.setText(user);
-            passwordEditText.setText(pwd);
+            usernameTIL.getEditText().setText("username");
+            passwordTIL.getEditText().setText("password");
+
         }
 
 
@@ -65,10 +75,11 @@ public class UserActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                if (usernameEditText.getText().length() > 0 && passwordEditText.getText().length() > 0) {
 
-                    String username=usernameEditText.getText().toString();
-                    String password=passwordEditText.getText().toString();
+
+                if (usernameTIL.getEditText().getText().length() > 0 && passwordTIL.getEditText().getText().length() > 0) {
+
+
 
                     SharedPreferences pref= getSharedPreferences("user_credentials",MODE_PRIVATE);
                     SharedPreferences.Editor editor=pref.edit();
@@ -79,10 +90,10 @@ public class UserActivity extends AppCompatActivity {
 
                     loginUser(username, password);
 
-
                     intentToPatientHome.putExtra("username", username);
 
                     startActivity(intentToPatientHome);
+
 
                 }
                 else

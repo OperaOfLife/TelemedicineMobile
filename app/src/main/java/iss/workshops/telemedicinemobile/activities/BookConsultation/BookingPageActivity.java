@@ -1,4 +1,4 @@
-package iss.workshops.telemedicinemobile.activities;
+package iss.workshops.telemedicinemobile.activities.BookConsultation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import iss.workshops.telemedicinemobile.R;
@@ -27,11 +26,9 @@ import iss.workshops.telemedicinemobile.domain.Appointment;
 import iss.workshops.telemedicinemobile.domain.Doctor;
 import iss.workshops.telemedicinemobile.domain.Patient;
 import iss.workshops.telemedicinemobile.domain.TimeSlots;
-import iss.workshops.telemedicinemobile.domain.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class BookingPageActivity extends AppCompatActivity implements View.OnClickListener{
 

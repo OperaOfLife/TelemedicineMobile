@@ -1,4 +1,4 @@
-package iss.workshops.telemedicinemobile;
+package iss.workshops.telemedicinemobile.activities.BookConsultation;
 
 
 import android.content.Context;
@@ -16,6 +16,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.domain.Doctor;
 
 public class BookCustomAdapter extends ArrayAdapter<Doctor> {

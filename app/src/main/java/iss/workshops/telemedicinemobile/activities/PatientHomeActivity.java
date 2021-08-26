@@ -11,21 +11,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import iss.workshops.telemedicinemobile.PatientConsultationHistoryAdapter;
 import iss.workshops.telemedicinemobile.R;
 
+import iss.workshops.telemedicinemobile.activities.BookConsultation.BookConsultationActivity;
+import iss.workshops.telemedicinemobile.activities.ConsultationHistory.ConsultationHistoryActivity;
 import iss.workshops.telemedicinemobile.activities.HealthNews.HealthNewsActivity;
 import iss.workshops.telemedicinemobile.activities.OurDoctors.DoctorActivity;
 
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.activities.ourChatBot.ChatBotMainActivity;
-import iss.workshops.telemedicinemobile.domain.Appointment;
 import iss.workshops.telemedicinemobile.domain.Patient;
-import iss.workshops.telemedicinemobile.domain.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -76,6 +71,7 @@ public class PatientHomeActivity extends AppCompatActivity {
             getPatientFirstName(username);
             textViewUserName = findViewById(R.id.tv_userName);
 
+            textViewUserName.setText(username);
             //pass username to next activity
             intentToHistory.putExtra("username", username);
         }
