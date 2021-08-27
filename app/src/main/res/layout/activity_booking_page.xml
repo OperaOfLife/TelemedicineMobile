@@ -6,14 +6,40 @@
     android:orientation="vertical"
     android:padding="10dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Make a booking"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:background="#ffffff"
+            android:text="Back" />
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
+        android:paddingLeft="5dp"
         android:layout_height="20dp"
         android:textColor="@color/black"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
         android:text="Doctor's Name: "
         android:textSize="16dp"/>
     <TextView
         android:id="@+id/doctorname"
+        android:paddingLeft="5dp"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:hint="Doctor's Name"
@@ -21,7 +47,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
+        android:paddingLeft="5dp"
         android:layout_marginTop="30dp"
+        android:textStyle="bold"
         android:text="Patient's Name: "
         android:textColor="@color/black"
         android:textSize="16dp"/>
@@ -29,6 +57,7 @@
         android:id="@+id/patientname"
         android:layout_width="match_parent"
         android:layout_height="20dp"
+        android:paddingLeft="5dp"
         android:hint="Patient's Name"
         android:textColor="@color/black"/>
     <TextView
@@ -44,16 +73,18 @@
         android:orientation="horizontal"
         android:padding="10dp"
         android:layout_marginTop="30dp">
-        <EditText
+        <TextView
             android:id="@+id/etCalender"
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:hint="Select Date"
+            android:text="Select Date"
+            android:textSize="22sp"
+            android:textColor="@color/black"
             android:textAlignment="center" />
 
         <Spinner
             android:id="@+id/timeslots"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"/>
@@ -64,6 +95,7 @@
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:text="Book"
+        android:layout_gravity="center"
         android:background="@drawable/button"
         android:layout_marginTop="30dp"/>
 

@@ -23,14 +23,6 @@
                     android:id="@+id/nav_ConsultationHistory"
                     android:icon="@drawable/ic_history2"
                     android:title="Consultation History" />
-                <item
-                    android:id="@+id/nav_healthnews"
-                    android:icon="@drawable/ic_healthnews"
-                    android:title="Health News" />
-                <item
-                    android:id="@+id/nav_locate"
-                    android:icon="@drawable/ic_healthnews"
-                    android:title="Locate Clinics" />
 
             </menu>
         </item>
@@ -39,12 +31,16 @@
     </group>
 
     <group android:checkableBehavior="single">
-        <item android:title="option">
+        <item android:title="See More">
             <menu>
-             <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_logout"
-                android:title="logout" />
+                <item
+                    android:id="@+id/nav_healthnews"
+                    android:icon="@drawable/ic_healthnews"
+                    android:title="Health News" />
+                <item
+                    android:id="@+id/nav_locate"
+                    android:icon="@drawable/ic_locatec"
+                    android:title="Locate Clinics" />
             </menu>
         </item>
     </group>

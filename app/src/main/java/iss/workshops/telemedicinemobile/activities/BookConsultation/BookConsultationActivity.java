@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import iss.workshops.telemedicinemobile.API;
+import iss.workshops.telemedicinemobile.MainActivity;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
 import iss.workshops.telemedicinemobile.domain.Doctor;
@@ -28,6 +30,11 @@ public class BookConsultationActivity extends AppCompatActivity {
     ListView lvDoctor;
     ArrayList<Doctor> doctors;
     Intent intentToBookingPage;
+    Button homeBtn;
+
+    Patient patient;
+    Intent intentToDashboard;
+
 
     private API api;
 
@@ -37,15 +44,12 @@ public class BookConsultationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_consultation);
 
         lvDoctor = (ListView) findViewById(R.id.doclist);
-
+        setuphomebtn();
 
         //get intent
         Intent intent = getIntent();
 
-        Patient patient = (Patient) intent.getSerializableExtra("patient");
-        mUsername = findViewById(R.id.username);
-        if (mUsername != null) {
-            mUsername.setText(patient.getFirstName() + " " + patient.getLastName());
+        patient = (Patient) intent.getSerializableExtra("patient");
 
             getDoctors();
             lvDoctor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,8 +64,21 @@ public class BookConsultationActivity extends AppCompatActivity {
                 }
             });
         }
-    }
 
+    private void setuphomebtn() {
+        homeBtn = findViewById(R.id.homeBtn);
+
+        if (homeBtn != null) {
+            homeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intentToDashboard = new Intent(BookConsultationActivity.this,MainActivity.class);
+                    intentToDashboard.putExtra("username",patient.getPatientId());
+                    startActivity(intentToDashboard);
+                }
+            });
+        }
+    }
     private void getDoctors() {
         Call<ArrayList<Doctor>> call = RetrofitClient
                 .getInstance()

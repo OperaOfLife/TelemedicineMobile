@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class HealthNewsActivity extends AppCompatActivity {
     private ArrayList<ParseItem> parseItems = new ArrayList<>();
     private ProgressBar progressBar;
 
+    Button homeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +38,14 @@ public class HealthNewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+
         setContentView(R.layout.activity_health_news);
         progressBar = findViewById(R.id.progressBar);
         recyclerView = findViewById(R.id.recyclerView);
         Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
+        /*String username = intent.getStringExtra("username");
         TextView t=(TextView)findViewById(R.id.health_title);
-        t.setText(username);
+        t.setText(username);*/
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -51,9 +54,21 @@ public class HealthNewsActivity extends AppCompatActivity {
 
         Content content = new Content();
         content.execute();
+        setuphomebtn();
     }
 
+    private void setuphomebtn() {
+        homeBtn = findViewById(R.id.homeBtn);
 
+        if (homeBtn != null) {
+            homeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        }
+    }
     private class Content extends AsyncTask<Void,Void,Void> {
 
         @Override

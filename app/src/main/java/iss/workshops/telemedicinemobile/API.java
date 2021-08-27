@@ -11,6 +11,7 @@ import iss.workshops.telemedicinemobile.domain.Doctor;
 import iss.workshops.telemedicinemobile.domain.Appointment;
 import iss.workshops.telemedicinemobile.domain.Patient;
 
+import iss.workshops.telemedicinemobile.domain.TimeSlots;
 import iss.workshops.telemedicinemobile.domain.User;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -19,6 +20,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
@@ -27,9 +29,11 @@ import retrofit2.http.Query;
 public interface API
 {
 
-    @POST("userRest/authenticate")
-    Call<User> login(@Query("uname") String username, @Query("pwd") String password);
+  /*  @POST("userRest/authenticate")
+    Call<User> login(@Query("uname") String username, @Query("pwd") String password);*/
 
+    @POST("userRest/authenticate")
+    Call<Boolean> login(@Query("uname") String username, @Query("pwd") String password);
 
 
     //doctors
@@ -49,6 +53,9 @@ public interface API
     @GET("/appointmentRest/getAllDoctors")
     Call<ArrayList<Doctor>> doctors();
 
+    //validate timeslots
+    @POST("/appointmentRest/validate")
+    Call<Void> validateAppointment(@Body Appointment appointment, @Query("date") String date);
     /*@POST("/appointmentRest/setAppointment")
     Call<Appointment> postAppointment(@Body Appointment appointment);*/
 
@@ -85,6 +92,8 @@ public interface API
     //KAT (26/8/2021) - not hardcoded - for retrieving searched clinics
     @GET("api/searchedclinics")
     Call<List<Clinic>> getSearchedClinics(@Query("searchValue") String searchValue);
+
+
 
 }
 

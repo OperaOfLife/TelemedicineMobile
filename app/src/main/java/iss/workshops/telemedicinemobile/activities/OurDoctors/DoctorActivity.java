@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,13 +33,15 @@ public class DoctorActivity extends AppCompatActivity {
     private  RecyclerView.Adapter adapter;
     private List<Doctor> doctorList;
     EditText searchDoctors;
-
+    Button homeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_doctor);
+
+        setuphomebtn();
 
 
         recyclerView = (RecyclerView) findViewById(R.id.doctorRecyclerView);
@@ -74,6 +77,19 @@ public class DoctorActivity extends AppCompatActivity {
 
         getDoctorList();
 
+    }
+
+    private void setuphomebtn() {
+        homeBtn = findViewById(R.id.homeBtn);
+
+        if (homeBtn != null) {
+            homeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        }
     }
 
     private void getDoctorList() {

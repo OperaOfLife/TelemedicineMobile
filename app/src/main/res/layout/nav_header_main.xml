@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="196dp"
-    android:background="@color/new_2"
+    android:background="?attr/colorPrimary"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -22,15 +22,14 @@
 
     <TextView
         android:id="@+id/head_user_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingLeft="8dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+
         android:text="Adele Adkins"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:id="@+id/head_user_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adele Adkins@gmail.com" />
 </LinearLayout>

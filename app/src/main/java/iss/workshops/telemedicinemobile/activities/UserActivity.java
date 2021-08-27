@@ -79,8 +79,6 @@ public class UserActivity extends AppCompatActivity {
                 password = passwordTIL.getEditText().getText().toString();
                 if (usernameTIL.getEditText().getText().length() > 0 && passwordTIL.getEditText().getText().length() > 0) {
 
-
-
                     SharedPreferences pref= getSharedPreferences("user_credentials",MODE_PRIVATE);
                     SharedPreferences.Editor editor=pref.edit();
                     editor.putString("username",username);
@@ -89,10 +87,6 @@ public class UserActivity extends AppCompatActivity {
 
 
                     loginUser(username, password);
-
-                    intentToPatientHome.putExtra("username", username);
-
-                    startActivity(intentToPatientHome);
 
 
                 }
@@ -121,7 +115,7 @@ public class UserActivity extends AppCompatActivity {
 
 
 
-            Call<User> call = RetrofitClient
+            Call<Boolean> call = RetrofitClient
                     .getInstance()
                     .getAPI()
                     .login(username,password);
@@ -141,32 +135,29 @@ public class UserActivity extends AppCompatActivity {
         return true;
     }
 
-    public void userLogin(Call<User> call)
+    public void userLogin(Call<Boolean> call)
     {
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<Boolean>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.code()== 200)
-                {
-                    String msg= "Successful" + response.code();
-
-                    Toast.makeText(UserActivity.this, msg, Toast.LENGTH_LONG).show();
-
-
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(UserActivity.this, "Unsuccessful"+response.code(), Toast.LENGTH_SHORT).show();
                 }
-                else {
-
-
-                    Toast.makeText(UserActivity.this, "UNSuccessful", Toast.LENGTH_LONG).show();
+                else if(response.body() == false) {
+                    Toast.makeText(UserActivity.this, "User not found", Toast.LENGTH_SHORT).show();
                 }
+                else if (response.body() == true) {
+
+                    Toast.makeText(UserActivity.this, "Successful login", Toast.LENGTH_SHORT).show();
+                    intentToPatientHome.putExtra("username", username);
+                    startActivity(intentToPatientHome);
+                } 
+
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
-                Toast.makeText(UserActivity.this, "Something went wrong! Try again later", Toast.LENGTH_LONG).show();
-
-
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                t.printStackTrace();
             }
         });
     }

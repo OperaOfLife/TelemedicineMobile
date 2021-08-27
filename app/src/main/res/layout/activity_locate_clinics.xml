@@ -7,17 +7,18 @@
     tools:context=".activities.LocateClinicsActivity">
 
 
-
 <TextView
     android:id="@+id/header"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Search by zone"
-    android:textSize="40sp"
-    android:layout_marginTop="30dp"
+    android:textColor="@color/teal_700"
+    android:textStyle="bold|italic"
+    android:textSize="35sp"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="18dp"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintBottom_toBottomOf="@id/back" />
 
 <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/northButton"
@@ -91,5 +92,17 @@
         android:src="@drawable/ic_search"
         app:layout_constraintLeft_toRightOf="@id/searchBar"
         app:layout_constraintTop_toBottomOf="@id/northButton" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Back"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintLeft_toRightOf="@id/header"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

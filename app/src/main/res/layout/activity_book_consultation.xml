@@ -9,22 +9,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:padding="10dp">
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Welcome !"
+            android:padding="10dp"
+            android:text="Book Consultation"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="16dp"/>
-        <TextView
-            android:id="@+id/username"
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/homeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:textSize="15dp"
-            android:textColor="@color/black"/>
+            android:layout_marginLeft="150dp"
+            android:background="#ffffff"
+            android:text="Home" />
     </LinearLayout>
 
     <ListView

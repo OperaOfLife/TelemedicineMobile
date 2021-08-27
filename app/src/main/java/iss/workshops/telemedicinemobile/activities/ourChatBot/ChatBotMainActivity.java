@@ -26,6 +26,7 @@ public class ChatBotMainActivity extends AppCompatActivity {
     private RecyclerView rvChatList;
     private RecyclerView.Adapter adapter;
     AdapterChatBot adapterChatBot;
+    Button homeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class ChatBotMainActivity extends AppCompatActivity {
         rvChatList.setLayoutManager(new LinearLayoutManager(this));
         rvChatList.setAdapter(adapterChatBot);
 
+        setuphomebtn();
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,19 @@ public class ChatBotMainActivity extends AppCompatActivity {
                 etChat.getText().clear();
             }
         });
+    }
+
+    private void setuphomebtn() {
+        homeBtn = findViewById(R.id.homeBtn);
+
+        if (homeBtn != null) {
+            homeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        finish();
+                    }
+            });
+        }
     }
 
 

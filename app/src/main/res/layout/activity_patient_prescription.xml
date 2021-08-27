@@ -10,16 +10,16 @@
 
     <TextView
         android:id="@+id/prescription_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Prescription Details"
+        android:layout_marginLeft="15dp"
+        android:text="Prescription"
         android:textColor="@color/teal_700"
+        android:textStyle="bold|italic"
         android:textSize="35sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TableLayout
         android:id="@+id/table"
@@ -116,11 +116,11 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="16dp"
         android:text="Back"
         android:textSize="15sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

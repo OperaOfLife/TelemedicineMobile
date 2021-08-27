@@ -66,10 +66,6 @@
                     android:layout_height="350dp"
                     android:orientation="vertical"
                     android:padding="10dp">
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="About"/>
 
                     <com.github.mikephil.charting.charts.BarChart
                         android:id="@+id/barchart"

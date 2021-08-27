@@ -70,6 +70,8 @@ public class LocateClinicsActivity extends AppCompatActivity implements View.OnC
         //set up NSEW buttons
         setupNSEWBtns();
 
+        //set up Back button for activity
+        setupBackBtn();
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -156,6 +158,23 @@ public class LocateClinicsActivity extends AppCompatActivity implements View.OnC
         sBtn.setOnClickListener(this);
         eBtn.setOnClickListener(this);
         wBtn.setOnClickListener(this);
+    }
+
+
+    private void setupBackBtn() {
+        Button btn = findViewById(R.id.back);
+
+        if (btn != null) {
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int id = v.getId();
+                    if (id == R.id.back) {
+                        finish();
+                    }
+                }
+            });
+        }
     }
 
 

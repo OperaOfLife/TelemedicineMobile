@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".activities.ourChatBot.ChatBotMainActivity">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/homeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:background="#ffffff"
+        app:layout_constraintEnd_toEndOf="@id/btnSend"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChatList"
         android:layout_width="0dp"

@@ -14,42 +14,40 @@
             android:layout_height="match_parent">
     <TextView
         android:id="@+id/consultationhistory_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:gravity="center"
+        android:layout_marginLeft="18dp"
         android:text="Consultation History"
         android:textColor="@color/teal_700"
         android:textStyle="bold|italic"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@id/back"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/consultationhistory_title"
-        app:layout_constraintVertical_bias="0.0" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/consultationhistory_title" />
 
-    <androidx.appcompat.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView"
-        app:layout_constraintVertical_bias="0.686" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toRightOf="@id/consultationhistory_title" />
 
        </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

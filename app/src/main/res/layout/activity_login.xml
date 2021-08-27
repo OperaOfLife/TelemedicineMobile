@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/img"
+    android:background="#fefdff"
     >
 
 
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:src="@drawable/logo1"
+                android:src="@drawable/telemedlogo"
                 android:layout_gravity="center"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -36,7 +36,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-
                     android:hint="Name"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -56,41 +55,19 @@
                     android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"
-                android:layout_weight="0.5"
-                android:layout_gravity="right"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Forgot Password ?"
-                    android:textColorLink="@android:color/background_dark" />
-                <Button
-                    android:id="@+id/login_forgot_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Click Here"
-                    android:textStyle="bold"
-                    android:textColor="@color/design_default_color_primary_dark"
-                    style="@style/Widget.AppCompat.Button.Borderless"/>
-
-            </LinearLayout>
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/login_button"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
-                android:background="@drawable/img"
+                android:background="#0082ff"
                 android:text="LOG IN"
                 android:textSize="20dp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -98,22 +75,7 @@
                 android:layout_weight="1.5"
                 android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Don't Have Account ?"
-                    android:textColorLink="@android:color/background_dark" />
-                <Button
-                    android:id="@+id/login_register_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Click Here"
-                    android:textStyle="bold"
-                    android:textColor="@color/design_default_color_primary_dark"
-                    style="@style/Widget.AppCompat.Button.Borderless"/>
-            </LinearLayout>
+                android:layout_gravity="center"/>
         </LinearLayout>
 
 

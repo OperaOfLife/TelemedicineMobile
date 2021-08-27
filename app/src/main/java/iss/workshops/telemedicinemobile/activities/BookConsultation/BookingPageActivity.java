@@ -8,20 +8,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Locale;
 
+import iss.workshops.telemedicinemobile.MainActivity;
 import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
+import iss.workshops.telemedicinemobile.activities.DashBoardActivity;
 import iss.workshops.telemedicinemobile.domain.Appointment;
 import iss.workshops.telemedicinemobile.domain.Doctor;
 import iss.workshops.telemedicinemobile.domain.Patient;
@@ -37,16 +42,18 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
     AppCompatButton mBook;
     Spinner mTimeslots;
     TimeSlots selected;
+    Button homeBtn;
 
     Patient inPatient;
     Doctor doctor;
 
-    EditText mCalender;
+    TextView mCalender;
     LocalDate xDate;
     String date;
     String newDate;
-    String currentDate = " ";
     TextView mStatus;
+
+
 
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -102,11 +109,13 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
                                 //8/7/1993
                                 date = day + "-" + month + "-" + year;
                                 mCalender.setText(date);
-                                calendar.set(year,month-1,day);
+                                Calendar myCalendar = Calendar.getInstance();
+                                myCalendar.set(year,month-1,day);
                                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                                newDate = sdf.format(calendar.getTime());
+                                newDate = sdf.format(myCalendar.getTime());
                             }
                         },year,month,day);
+                        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis()+24*60*60*1000);
                         datePickerDialog.show();
                     }
                 });
@@ -124,38 +133,79 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
             private void setUpButton(){
                 mBook = (AppCompatButton) findViewById(R.id.book);
                 mBook.setOnClickListener(this);
+                homeBtn = findViewById(R.id.homeBtn);
+                homeBtn.setOnClickListener(this);
+
             }
 
 
 
     @Override
     public void onClick(View v) {
-        setUpAppointment();
-    }
-    protected void setUpAppointment(){
-        //create new appointment to store doctor and appointment date.
-        if(doctor != null && newDate != null) {
-            //validate if repeating date and supposedly timeslot
-            if(currentDate.equals(newDate)){
-                Toast.makeText(BookingPageActivity.this,"Duplicated Date time slot",Toast.LENGTH_SHORT).show();
-            }
-            else {
-                currentDate = newDate;
-                selected = (TimeSlots) mTimeslots.getSelectedItem();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
-                //LocalDate someDate = LocalDate.parse(xDate,formatter);
-                Appointment appointment = new Appointment();
-                appointment.setDoctor(doctor);
-                appointment.setPatient(inPatient);
-                appointment.setAppointmentTime(selected);
-                Call<Appointment> call = RetrofitClient
-                        .getInstance()
-                        .getAPI()
-                        .postAppointment(appointment, newDate);
-                postAppointment(call);
-            }
+        int id = v.getId();
+        if(id == R.id.book)
+            validateAppointment();
+            //setUpAppointment();
+        else if(id == R.id.homeBtn){
+            finish();
         }
+
     }
+
+
+    protected void setUpAppointment(){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
+            //LocalDate someDate = LocalDate.parse(xDate,formatter);
+            TimeSlots selected = (TimeSlots)mTimeslots.getSelectedItem();
+            Appointment appointment = new Appointment();
+            appointment.setDoctor(doctor);
+            appointment.setPatient(inPatient);
+            appointment.setAppointmentTime(selected);
+
+            Call<Appointment> call = RetrofitClient
+                    .getInstance()
+                    .getAPI()
+                    .postAppointment(appointment, newDate);
+            postAppointment(call);
+        }
+
+    private void validateAppointment() {
+        if(date== null) {
+            Toast.makeText(this, "Input a date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        TimeSlots selected2 = (TimeSlots)mTimeslots.getSelectedItem();
+        Appointment appointment = new Appointment();
+        appointment.setAppointmentTime(selected2);
+        appointment.setDoctor(doctor);
+
+        Call<Void> call = RetrofitClient
+                .getInstance()
+                .getAPI()
+                .validateAppointment(appointment,newDate);
+        validateThem(call);
+    }
+    private void validateThem(Call<Void> call){
+
+        call.enqueue(new Callback<Void>() {
+            //issue is timeslots and doctor object
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(!response.isSuccessful())
+                    Toast.makeText(BookingPageActivity.this, "Duplicated Value ", Toast.LENGTH_SHORT).show();
+                else if (response.isSuccessful()) {
+                    Toast.makeText(BookingPageActivity.this, "Good", Toast.LENGTH_SHORT).show();
+                    setUpAppointment();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
     private void postAppointment(Call<Appointment> call) {
 
         call.enqueue(new Callback<Appointment>() {
@@ -163,10 +213,8 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
             public void onResponse(Call<Appointment> call, Response<Appointment> response) {
                 if(!response.isSuccessful())
                     Toast.makeText(BookingPageActivity.this, "Unsuccessful "+response.code(), Toast.LENGTH_SHORT).show();
-                Appointment appoint = response.body();
-                String content = " ";
-                content += "Appointment set";
-                mStatus.setText(content);
+                else
+                    Toast.makeText(BookingPageActivity.this, "Booking Successful", Toast.LENGTH_SHORT).show();
             }
 
             @Override

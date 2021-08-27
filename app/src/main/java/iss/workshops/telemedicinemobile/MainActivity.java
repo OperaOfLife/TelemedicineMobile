@@ -198,10 +198,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //String emailstring=patients.getEmail()
-        Patient pat = getPatients(fname);
+/*        Patient pat = getPatients(fname);
         String emailstring=pat.getEmail();
         TextView email =  view.findViewById(R.id.head_user_email);
-        email.setText(emailstring);
+        email.setText(emailstring);*/
 
 
 
@@ -333,7 +333,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(!response.isSuccessful()){
                     Toast.makeText(MainActivity.this, "Unsuccessful" + response.code(), Toast.LENGTH_SHORT).show();
                 }
+
                 todayAppoint = response.body();
+
                 tvQueue.setText(String.valueOf(todayAppoint));
                 getTotalPatients();
             }
