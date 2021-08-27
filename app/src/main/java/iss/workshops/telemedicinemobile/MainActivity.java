@@ -1,10 +1,12 @@
 package iss.workshops.telemedicinemobile;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,8 @@ import iss.workshops.telemedicinemobile.domain.Patient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.content.ClipData.Item;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -47,16 +51,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     String username;
     Intent response;
-    
+    String firstName;
+    String fname;
+    View menu;
+
     //dashboard
     TextView tvQueue, tvPatients, tvDoctors, tvWaiting;
     BarChart bcAppoints ;
+
 
     int todayAppoint;
     int patientNum;
     int doctorNum;
 
-    Patient patient1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +74,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         response = getIntent();
         username=response.getStringExtra("username");
 
-
-        TextView t=(TextView)findViewById(R.id.Aname);
-        t.setText(username);
 
 
 
@@ -92,14 +97,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intentToHistory.putExtra("username", username);
         }
 
-
+         fname=getPatientFirstName(username);
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar);
+        menu=findViewById(R.id.menuItem);
+
+        View view = navigationView.getHeaderView(0);
+        TextView name=(TextView)view.findViewById(R.id.head_user_name);
+        name.setText(username);
 
 
-        //after the cloud completed
-        //loadUserInformation();
+        navigationView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadUserInformation(username);
+            }
+        });
 
 
         //tool bar
@@ -155,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
               startActivity(intentToDoctors);
               break;
           case R.id.nav_BookConsultation:
-              Patient patient=getPatients(username);
+              patient=getPatients(username);
               intentToBook.putExtra("patient", patient);
               startActivity(intentToBook);
               break;
@@ -175,19 +189,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
-    /*private void loadUserInformation(){
-        if(!username.equals("username")) {
+    private void loadUserInformation(String username)
+    {
+
         View view = navigationView.getHeaderView(0);
         TextView name=(TextView)view.findViewById(R.id.head_user_name);
         name.setText(username);
 
-        Patient patient = getPatients(username);
-        TextView email = (TextView) view.findViewById(R.id.head_user_email);
-        email.setText(patient.getEmail());
-        }
+
+        //String emailstring=patients.getEmail()
+        Patient pat = getPatients(fname);
+        String emailstring=pat.getEmail();
+        TextView email =  view.findViewById(R.id.head_user_email);
+        email.setText(emailstring);
 
 
-    }*/
+
+    }
 
 
     private Patient getPatients(String username) {
@@ -228,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return patient;
     }
-    private void getPatientFirstName(String username){
+    private String getPatientFirstName(String username){
         Call<Patient> patientCall=RetrofitClient
                 .getInstance()
                 .getAPI()
@@ -251,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
 
                 patient = response.body();
-                String firstName = patient.getFirstName();
+                firstName = patient.getFirstName();
 
 
             }
@@ -260,6 +278,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.e("ERROR: ", t.getMessage());
             }
         });
+        return firstName;
     }
     //dashboard
 

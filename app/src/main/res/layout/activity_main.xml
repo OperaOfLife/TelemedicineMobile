@@ -56,27 +56,10 @@
                         android:layout_marginTop="30dp"
                         android:layout_weight="10"
                         android:padding="10dp"
-                        android:text="GushBoard"
+                        android:text="DashBoard"
                         android:textSize="20dp"
                         android:textStyle="bold" />
-                    <!--                    <TextView-->
-<!--                        android:id="@+id/homepage"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Home"-->
-<!--                        android:textSize="15dp"-->
-<!--                        android:textStyle="italic"-->
 
-<!--                        android:layout_weight="1"/>-->
-<!--                    <TextView-->
-<!--                        android:id="@+id/logout"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Logout"-->
-<!--                        android:textSize="15dp"-->
-<!--                        android:textStyle="italic"-->
-
-<!--                        android:layout_weight="1"/>-->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"

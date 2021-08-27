@@ -4,7 +4,8 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item android:title="menu">
+        <item android:title="menu"
+            android:id="@+id/menuItem">
             <menu>
                 <item
                     android:id="@+id/nav_SymptomChecker"
