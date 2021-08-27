@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fefdff"
+    android:background="?attr/colorPrimary"
     >
 
 
@@ -36,6 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:background="@color/white"
                     android:hint="Name"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -51,6 +52,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:hint="Password"
                     android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>

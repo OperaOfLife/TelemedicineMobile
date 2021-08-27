@@ -194,7 +194,7 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
                 if(!response.isSuccessful())
                     Toast.makeText(BookingPageActivity.this, "Duplicated Value ", Toast.LENGTH_SHORT).show();
                 else if (response.isSuccessful()) {
-                    Toast.makeText(BookingPageActivity.this, "Good", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BookingPageActivity.this, "Email sent", Toast.LENGTH_SHORT).show();
                     setUpAppointment();
                 }
             }
