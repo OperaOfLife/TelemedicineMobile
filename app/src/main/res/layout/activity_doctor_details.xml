@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".activities.OurDoctors.DoctorDetailsActivity">
 
+    <Button
+        android:id="@+id/bookbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="168dp"
+        android:text="Make an appointment"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content1" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/homeBtn"
         android:layout_width="wrap_content"
@@ -26,6 +39,7 @@
         android:background="@color/white"
         android:text="Doctor Details"
         android:textSize="20dp"
+        android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -35,29 +49,31 @@
         android:id="@+id/speciality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="TextView"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/content1"
-        app:layout_constraintEnd_toEndOf="@+id/hospital"
-        app:layout_constraintStart_toStartOf="@+id/hospital"
-        app:layout_constraintTop_toBottomOf="@+id/hospital" />
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.117"
+        tools:layout_editor_absoluteX="168dp" />
 
     <TextView
         android:id="@+id/content1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="268dp"
         android:text="Over the years, Zhong Nanshan embodied an enviable level of health; he was often photographed showing off his toned muscles, did weight training with ease, and could often be seen on the basketball court. Although he didn't choose to become a professional athlete in the end, Zhong Nanshan has been physically active for decades, and still is today. He says 'exercise plays a key role in keeping fit."
-        android:textSize="15sp"
 
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hospital"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/name"
@@ -70,21 +86,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/hospital"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-
-        android:layout_marginTop="8dp"
-        android:text="University Health Centre (UHC)"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/name"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <ImageView
         android:id="@+id/imageView"

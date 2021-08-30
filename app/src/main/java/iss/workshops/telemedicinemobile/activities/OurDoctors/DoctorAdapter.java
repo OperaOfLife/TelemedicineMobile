@@ -18,16 +18,19 @@ import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.activities.HealthNews.DetailActivity;
 import iss.workshops.telemedicinemobile.activities.HealthNews.ParseItem;
 import iss.workshops.telemedicinemobile.domain.Doctor;
+import iss.workshops.telemedicinemobile.domain.Patient;
 
 
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder> {
 
     private Context context;
     private List<Doctor> doctorList;
+    private Patient patient;
 
-    public DoctorAdapter(Context context, List<Doctor> doctorList) {
+    public DoctorAdapter(Context context, List<Doctor> doctorList,Patient patient) {
         this.context = context;
         this.doctorList = doctorList;
+        this.patient=patient;
     }
 
     @NonNull
@@ -74,6 +77,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
             intent.putExtra("name", doctor.getFirstName() + " " + doctor.getLastName());
             intent.putExtra("speciality", doctor.getSpeciality());
             intent.putExtra("description", doctor.getDescription());
+            intent.putExtra("patient",patient);
+            intent.putExtra("doctor",doctor);
 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
             context.startActivity(intent);

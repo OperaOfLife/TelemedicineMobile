@@ -1,7 +1,7 @@
 package iss.workshops.telemedicinemobile;
 
-import android.content.ClipData;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,18 +33,18 @@ import iss.workshops.telemedicinemobile.activities.ConsultationHistory.Consultat
 import iss.workshops.telemedicinemobile.activities.HealthNews.HealthNewsActivity;
 import iss.workshops.telemedicinemobile.activities.LocateClinicsActivity;
 import iss.workshops.telemedicinemobile.activities.OurDoctors.DoctorActivity;
+import iss.workshops.telemedicinemobile.activities.UserActivity;
 import iss.workshops.telemedicinemobile.activities.ourChatBot.ChatBotMainActivity;
 import iss.workshops.telemedicinemobile.domain.Patient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import android.content.ClipData.Item;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Intent intentToLocate,intentToDashBoard,intentToHistory,intentToDoctors,
-            intentToBook,intentToHealthNews,intentToChatBot;
+            intentToBook,intentToHealthNews,intentToChatBot,intentToLogin;
     Patient patient;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intentToChatBot = new Intent(this, ChatBotMainActivity.class);
         intentToDashBoard = new Intent(this, MainActivity.class);
         intentToLocate = new Intent(this, LocateClinicsActivity.class);
+         intentToLogin = new Intent(this, UserActivity.class);
 
 
         Intent response = getIntent();
@@ -166,6 +167,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
               startActivity(intentToHealthNews);
               break;
           case R.id.nav_OurDoctors:
+              patient=getPatients(username);
+              intentToDoctors.putExtra("patient", patient);
+
               startActivity(intentToDoctors);
               break;
           case R.id.nav_BookConsultation:
@@ -182,6 +186,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
               break;
           case R.id.nav_locate:
               startActivity(intentToLocate);
+              break;
+          case R.id.nav_logout:
+              final SharedPreferences pref=getSharedPreferences("user_credentials",MODE_PRIVATE);
+
+              SharedPreferences.Editor editor=pref.edit();
+              editor.clear();
+              editor.commit();
+              //finish();
+              startActivity(intentToLogin);
               break;
           default:
               throw new IllegalStateException("Unexpected value: " + item.getItemId());

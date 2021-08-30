@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,6 +25,7 @@ import iss.workshops.telemedicinemobile.R;
 import iss.workshops.telemedicinemobile.RetrofitClient;
 
 import iss.workshops.telemedicinemobile.domain.Doctor;
+import iss.workshops.telemedicinemobile.domain.Patient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +36,7 @@ public class DoctorActivity extends AppCompatActivity {
     private List<Doctor> doctorList;
     EditText searchDoctors;
     Button homeBtn;
+    Patient p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class DoctorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor);
 
         setuphomebtn();
+        Intent intent = getIntent();
+        p = (Patient)intent.getSerializableExtra("patient");
 
 
         recyclerView = (RecyclerView) findViewById(R.id.doctorRecyclerView);
@@ -102,7 +107,7 @@ public class DoctorActivity extends AppCompatActivity {
             public void onResponse(Call<List<Doctor>> call, Response<List<Doctor>> response) {
                 if (response.isSuccessful()) {
                     doctorList = response.body();
-                    adapter=new DoctorAdapter(getApplicationContext(),doctorList);
+                    adapter=new DoctorAdapter(getApplicationContext(),doctorList,p);
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -124,7 +129,7 @@ public class DoctorActivity extends AppCompatActivity {
             public void onResponse(Call<List<Doctor>> call, Response<List<Doctor>> response){
                 if (response.isSuccessful()){
                     doctorList = response.body();
-                    adapter = new DoctorAdapter(getApplicationContext(),doctorList);
+                    adapter = new DoctorAdapter(getApplicationContext(),doctorList,p);
                     recyclerView.setAdapter(adapter);
                     progressDialog.dismiss();
                 }

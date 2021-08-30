@@ -52,6 +52,7 @@ public class UserActivity extends AppCompatActivity {
 
 
         loginButton = findViewById(R.id.login_button);
+
         usernameTIL= findViewById(R.id.login_name_layout);
         passwordTIL= findViewById(R.id.login_password_layout);
 
@@ -97,6 +98,10 @@ public class UserActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
     }
 
     private void loginUser(String username, String password)

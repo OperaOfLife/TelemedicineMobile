@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TelemedicineMobile.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.PatientClinicListActivity"></activity>
+        <activity android:name=".activities.PatientClinicListActivity" />
         <activity android:name=".activities.LocateClinicsActivity" />
         <activity android:name=".activities.DashBoardActivity" />
         <activity android:name=".activities.BookConsultation.BookingPageActivity" />
@@ -28,9 +28,8 @@
         <activity android:name=".activities.BookConsultation.BookConsultationActivity" />
         <activity android:name=".activities.OurDoctors.DoctorActivity" />
         <activity android:name=".activities.PatientHomeActivity" />
-        <activity android:name=".activities.UserActivity"/>
-
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".activities.UserActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

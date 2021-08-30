@@ -9,30 +9,42 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import iss.workshops.telemedicinemobile.R;
+import iss.workshops.telemedicinemobile.activities.BookConsultation.BookingPageActivity;
+import iss.workshops.telemedicinemobile.domain.Doctor;
+import iss.workshops.telemedicinemobile.domain.Patient;
 
 public class DoctorDetailsActivity extends AppCompatActivity {
-    TextView name,speciality,hospital,content;
+    TextView name, speciality, content;
     Button homeBtn;
+    Button bookBtn;
+    Patient p;
+    Doctor d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_details);
 
-        name=findViewById(R.id.name);
-        speciality=findViewById(R.id.speciality);
-        hospital=findViewById(R.id.hospital);
-        content=findViewById(R.id.content1);
+        name = findViewById(R.id.name);
+        speciality = findViewById(R.id.speciality);
+        bookBtn = findViewById(R.id.bookbutton);
+
+
+        content = findViewById(R.id.content1);
 
 
         Intent intent = getIntent();
+        p = (Patient) intent.getSerializableExtra("patient");
+        d = (Doctor) intent.getSerializableExtra("doctor");
+
         name.setText(intent.getStringExtra("name"));
         speciality.setText(intent.getStringExtra("speciality"));
-        hospital.setText("University Health Centre (UHC)");
+
         content.setText(intent.getStringExtra("description"));
 
 
         setuphomebtn();
+        setupbookbtn();
 
     }
 
@@ -47,5 +59,25 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void setupbookbtn() {
+
+
+        if (bookBtn != null) {
+            bookBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(), BookingPageActivity.class);
+                    intent.putExtra("patient", p);
+                    intent.putExtra("doctor", d);
+                    startActivity(intent);
+
+
+                }
+            });
+        }
+
+
     }
 }
