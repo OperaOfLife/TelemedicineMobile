@@ -25,12 +25,12 @@ public class PatientMCActivity extends AppCompatActivity {
         String id = intent.getStringExtra("mcId");
         String dateFrom = intent.getStringExtra("mcDateFrom");
         String dateTo = intent.getStringExtra("mcDateTo");
-        int duration = intent.getIntExtra("mcDuration", 0);
+        //int duration = intent.getIntExtra("mcDuration", 0);
 
         TextView mcId = findViewById(R.id.mcId);
         TextView mcDateFrom = findViewById(R.id.dateFrom);
         TextView mcDateTo = findViewById(R.id.dateTo);
-        TextView mcDuration = findViewById(R.id.duration);
+        //TextView mcDuration = findViewById(R.id.duration);
         TableLayout table = findViewById(R.id.table);
         //TextView noMC = findViewById(R.id.noMC);
 
@@ -46,8 +46,8 @@ public class PatientMCActivity extends AppCompatActivity {
             if (mcDateTo != null && dateTo != null)
                 mcDateTo.setText(dateTo);
 
-            if (mcDuration != null && duration != 0)
-                mcDuration.setText(String.valueOf(duration) + " day(s)");
+            /*if (mcDuration != null && duration != 0)
+                mcDuration.setText(String.valueOf(duration) + " day(s)");*/
         }
 //        else {
 //            table.setVisibility(View.INVISIBLE);

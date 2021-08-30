@@ -115,7 +115,7 @@ public class BookingPageActivity extends AppCompatActivity implements View.OnCli
                                 newDate = sdf.format(myCalendar.getTime());
                             }
                         },year,month,day);
-                        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis()+24*60*60*1000);
+                        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
                         datePickerDialog.show();
                     }
                 });
