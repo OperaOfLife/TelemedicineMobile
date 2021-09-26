@@ -73,7 +73,7 @@ public class HealthNewsActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-          super.onPreExecute();
+            super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
             progressBar.startAnimation(AnimationUtils.loadAnimation(HealthNewsActivity.this, android.R.anim.fade_in));
         }
