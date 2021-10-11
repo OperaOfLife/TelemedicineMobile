@@ -32,6 +32,7 @@ import iss.workshops.telemedicinemobile.activities.ConsultationHistory.Consultat
 
 import iss.workshops.telemedicinemobile.activities.HealthNews.HealthNewsActivity;
 import iss.workshops.telemedicinemobile.activities.LocateClinicsActivity;
+import iss.workshops.telemedicinemobile.activities.ManageAccountActivity;
 import iss.workshops.telemedicinemobile.activities.OurDoctors.DoctorActivity;
 import iss.workshops.telemedicinemobile.activities.UserActivity;
 import iss.workshops.telemedicinemobile.activities.ourChatBot.ChatBotMainActivity;
@@ -44,12 +45,13 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Intent intentToLocate,intentToDashBoard,intentToHistory,intentToDoctors,
-            intentToBook,intentToHealthNews,intentToChatBot,intentToLogin;
+            intentToBook,intentToHealthNews,intentToChatBot,intentToLogin,intentToManageAccount;
     Patient patient;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     String username;
+    String password;
     Intent response;
     String firstName;
     String fname;
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         response = getIntent();
         username=response.getStringExtra("username");
+        password=response.getStringExtra("password");
 
 
 
@@ -84,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intentToChatBot = new Intent(this, ChatBotMainActivity.class);
         intentToDashBoard = new Intent(this, MainActivity.class);
         intentToLocate = new Intent(this, LocateClinicsActivity.class);
-         intentToLogin = new Intent(this, UserActivity.class);
+        intentToLogin = new Intent(this, UserActivity.class);
+        intentToManageAccount = new Intent(this, ManageAccountActivity.class);
 
 
         Intent response = getIntent();
@@ -186,6 +190,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
               break;
           case R.id.nav_locate:
               startActivity(intentToLocate);
+              break;
+          case R.id.nav_manageAccount:
+              patient=getPatients(username);
+              intentToManageAccount.putExtra("patient",patient);
+              intentToManageAccount.putExtra("password",password);
+              startActivity(intentToManageAccount);
               break;
           case R.id.nav_logout:
               final SharedPreferences pref=getSharedPreferences("user_credentials",MODE_PRIVATE);

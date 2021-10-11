@@ -22,20 +22,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3"
+                android:layout_marginBottom="20dp"
                 android:src="@drawable/telemedlogo"
+                android:layout_gravity="center"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/covid_button"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:background="#E0FFFF"
+                android:text="COVID-19 Booking"
+                android:textSize="20dp"
+                android:textColor="#DC143C"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_marginTop="0dp"
                 android:layout_gravity="center"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/white"
                     android:hint="Name"
                     android:inputType="textEmailAddress" />
@@ -44,7 +68,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_password_layout"
                 android:layout_width="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 >
@@ -59,27 +83,56 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/login_button"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:background="#0082ff"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:background="#87CEFA"
                 android:text="LOG IN"
-                android:textSize="20dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
-                />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1.5"
+                android:layout_weight="0.5"
                 android:orientation="horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="0dp"
                 android:layout_gravity="center"/>
-        </LinearLayout>
 
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/register_button"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="#87CEFA"
+        android:text="Register"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center"/>
+    </LinearLayout>
 
 
 </LinearLayout>
+
+
+
+
+
+
+

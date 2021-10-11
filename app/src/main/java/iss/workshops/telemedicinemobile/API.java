@@ -26,8 +26,7 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface API
-{
+public interface API {
 
   /*  @POST("userRest/authenticate")
     Call<User> login(@Query("uname") String username, @Query("pwd") String password);*/
@@ -63,7 +62,6 @@ public interface API
     Call<List<Appointment>> getAppointments(@Query("patientId") String username);
 
 
-
     @GET("api/patient")
     Call<Patient> getPatients(@Query("patientId") String patientId);
 
@@ -94,6 +92,10 @@ public interface API
     Call<List<Clinic>> getSearchedClinics(@Query("searchValue") String searchValue);
 
 
+    @POST("registerRest/registerPatient")
+    Call<Boolean> register(@Query("nric") String nric, @Query("fname") String fname, @Query("lname") String lname, @Query("email") String email, @Query("mobile") String mobile, @Query("pwd") String pwd1, @Query("gender") String gender);
 
+    @POST("registerRest/updatePatient")
+    Call<Boolean> updateUserProfile(@Query("nric") String nric, @Query("fname") String fname, @Query("lname") String lname, @Query("email") String email, @Query("mobile") String mobile, @Query("pwd") String pwd1, @Query("gender") String gender);
 }
 
