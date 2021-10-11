@@ -8,12 +8,14 @@ import android.os.Bundle;
 
 
 import android.os.StrictMode;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -37,10 +39,11 @@ public class UserActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
-    Intent intentToPatientHome,intentToBookConsultation;
+    Intent intentToPatientHome,intentToBookConsultation,intentToRegister;
 
     String username;
     String password;
+    TextView register;
     private API api;
 
     @Override
@@ -49,12 +52,25 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         intentToPatientHome = new Intent(this, MainActivity.class);
+        intentToRegister = new Intent(this, RegisterActivity.class);
 
 
         loginButton = findViewById(R.id.login_button);
 
         usernameTIL= findViewById(R.id.login_name_layout);
         passwordTIL= findViewById(R.id.login_password_layout);
+        register= findViewById(R.id.register_button);
+
+
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intentToRegister);
+            }
+        });
+
+
 
 
 
@@ -155,6 +171,7 @@ public class UserActivity extends AppCompatActivity {
 
                     Toast.makeText(UserActivity.this, "Successful login", Toast.LENGTH_SHORT).show();
                     intentToPatientHome.putExtra("username", username);
+                    intentToPatientHome.putExtra("password", password);
                     startActivity(intentToPatientHome);
                 } 
 
