@@ -31,6 +31,8 @@ public class Prescription {
         this.prescriptionId = prescriptionId;
         this.medicine = medicine;
         this.remarks = remarks;
+
+
     }
 
 }

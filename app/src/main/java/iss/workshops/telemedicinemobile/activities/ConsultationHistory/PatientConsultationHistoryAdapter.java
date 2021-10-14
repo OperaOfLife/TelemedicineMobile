@@ -70,7 +70,8 @@ public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<Pati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PatientMCActivity.class);
-                if (appointmentList.get(position).getMc() != null) {
+                if (appointmentList.get(position).getMc() != null)
+                {
                     intent.putExtra("mcId", appointmentList.get(position).getMc().getMcId());
                     String dateFrom_Formatted = sdf.format(appointmentList.get(position).getMc().getDateFrom());
                     intent.putExtra("mcDateFrom", dateFrom_Formatted);
@@ -84,6 +85,34 @@ public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<Pati
                 }
             }
         });
+
+        holder.downloadMc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(v.getContext(), DownloadMcPdfActivity.class);
+                if (appointmentList.get(position).getMc() != null)
+                {
+                    intent.putExtra("mcId", appointmentList.get(position).getMc().getMcId());
+                    String dateFrom_Formatted = sdf.format(appointmentList.get(position).getMc().getDateFrom());
+                    intent.putExtra("mcDateFrom", dateFrom_Formatted);
+                    intent.putExtra("patientName", appointmentList.get(position).getPatient().getFirstName());
+                    intent.putExtra("patientId", appointmentList.get(position).getPatient().getPatientId());
+                    intent.putExtra("doctorName", appointmentList.get(position).getDoctor().getFirstName());
+                    intent.putExtra("doctorId", appointmentList.get(position).getDoctor().getDoctorId());
+                    String dateTo_Formatted = sdf.format(appointmentList.get(position).getMc().getDateTo());
+                    intent.putExtra("mcDateTo", dateTo_Formatted);
+                    intent.putExtra("mcDuration", appointmentList.get(position).getMc().getDuration());
+                    v.getContext().startActivity(intent);
+                }
+                else {
+                    Toast.makeText(mContext.getApplicationContext(), "No MC Found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
     }
 
     @Override
@@ -105,6 +134,7 @@ public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<Pati
         TextView date;
         Button viewPrescription;
         Button viewMc;
+        Button downloadMc;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -114,6 +144,7 @@ public class PatientConsultationHistoryAdapter extends RecyclerView.Adapter<Pati
             date = itemView.findViewById(R.id.tv_consultationDate);
             viewPrescription =itemView.findViewById(R.id.btn_viewPrescription);
             viewMc = itemView.findViewById(R.id.btn_viewMc);
+            downloadMc = itemView.findViewById(R.id.btn_downloadMc);
 
         }
     }

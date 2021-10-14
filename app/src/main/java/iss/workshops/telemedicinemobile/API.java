@@ -97,5 +97,7 @@ public interface API {
 
     @POST("registerRest/updatePatient")
     Call<Boolean> updateUserProfile(@Query("nric") String nric, @Query("fname") String fname, @Query("lname") String lname, @Query("email") String email, @Query("mobile") String mobile, @Query("pwd") String pwd1, @Query("gender") String gender);
+
+
 }
 
